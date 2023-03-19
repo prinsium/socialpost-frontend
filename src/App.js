@@ -1,6 +1,7 @@
 import React from 'react';
-
 import './App.css';
+
+
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import ExploreIcon from '@mui/icons-material/Explore';
@@ -12,6 +13,7 @@ import { useState } from "react";
 function App() {
   const [value, setValue] = useState(0);
   return (
+    <nav className="navbar fixed-bottom navbar-light">
     <BottomNavigation
   showLabels
   value={value}
@@ -25,6 +27,7 @@ function App() {
   <BottomNavigationAction label="Chat" icon={<ChatIcon />} />
   <BottomNavigationAction label="Account" icon={<AccountCircleIcon />} />
 </BottomNavigation>
+    </nav>
   );
 }
 
