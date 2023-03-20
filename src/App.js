@@ -1,43 +1,29 @@
 import React from 'react';
 import './App.css';
-import "@mui/material";
-import "react-icons";
 
-import "react-router-dom";
-import { CssBaseline } from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
-
+import { Navbar } from './components/Navbar';
 import {
-  BrowserRouter,
-  Route,
+  BrowserRouter as Router,
   Routes,
-  useParams,
-  useSearchParams,
+  Route
 } from "react-router-dom";
-import theme from "./theme";
-
-import LoginView from "./components/views/LoginView";
-import SignupView from "./components/views/SignupView";
-
-import { initiateSocketConnection, socket } from "./helpers/socketHelper";
-import { useEffect } from "react";
-import { BASE_URL } from "./config";
-import { io } from "socket.io-client";
+import Signup from './components/Signup';
 
 function App() {
-  initiateSocketConnection();
 
   return (
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <CssBaseline />
+    <div>
+        <Router>
+          <Navbar/>
         <Routes>
-          <Route path="/login" element={<LoginView />} />
-          <Route path="/signup" element={<SignupView />} />
+        {/* <Route exact path='/Home' element={<Home/>}/>
+        <Route exact path='/About' element={<About/>}/>
+        <Route exact path='/Login' element={<Login/>}/> */}
+        <Route exact path='/Signup' element={<Signup/>}/>
         </Routes>
-      </BrowserRouter>
-    </ThemeProvider>
-  );
+        </Router>
+</div>
+  )
 }
 
 export default App;

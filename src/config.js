@@ -1,3 +1,3 @@
-let BASE_URL = "http://localhost:3000/";
+let BASE_URL = "http://localhost:5000/";
 
 export { BASE_URL };
