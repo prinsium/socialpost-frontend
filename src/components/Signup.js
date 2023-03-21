@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { BASE_URL } from "../config";
 
 const Signup = (props) => {
-    const [credentials, setCredentials] = useState({username: "", email: "", password: "", confirmpassword: ""}) 
+    const [credentials, setCredentials] = useState({username: "", email: "", password: ""}) 
      
     let navigate = useNavigate();
 
@@ -57,10 +57,6 @@ const Signup = (props) => {
                 <div className="form-outline mb-3">
                     <label htmlFor="password" className="form-label">Password</label>
                     <input type="password" className="form-control" onChange={onChange} name="password" id="password" minLength={5} required/>
-                </div>
-                <div className="form-outline mb-3">
-                    <label htmlFor="confirmpassword" className="form-label">Password</label>
-                    <input type="password" className="form-control" onChange={onChange} name="confirmpassword" id="confirmpassword" minLength={5} required/>
                 </div>
 
                 <div className="text-center text-lg-start mt-4 pt-2">

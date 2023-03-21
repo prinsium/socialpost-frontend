@@ -8,6 +8,7 @@ import {
   Route
 } from "react-router-dom";
 import Signup from './components/Signup';
+import Login from './components/Login';
 
 function App() {
 
@@ -17,8 +18,8 @@ function App() {
           <Navbar/>
         <Routes>
         {/* <Route exact path='/Home' element={<Home/>}/>
-        <Route exact path='/About' element={<About/>}/>
-        <Route exact path='/Login' element={<Login/>}/> */}
+        <Route exact path='/About' element={<About/>}/> */}
+        <Route exact path='/Login' element={<Login/>}/>
         <Route exact path='/Signup' element={<Signup/>}/>
         </Routes>
         </Router>
