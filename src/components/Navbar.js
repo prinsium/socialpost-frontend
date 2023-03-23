@@ -3,8 +3,6 @@ import {
   IconButton,
   Stack,
   TextField,
-  Typography,
-  Button,
   Modal,
 } from "@mui/material";
 import { Box } from "@mui/system";
@@ -15,12 +13,12 @@ import {
   AiFillHome,
   AiFillMessage,
   AiOutlineSearch,
-  AiOutlineUserAdd
+  AiOutlineUserAdd,
+  AiOutlinePlusCircle,
 } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import { isLoggedIn, logoutUser } from "../helpers/authHelper";
 import UserAvatar from "./UserAvatar";
-import HorizontalStack from "./util/HorizontalStack";
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 
@@ -49,6 +47,8 @@ const Navbar = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const handleonClose = () => setAnchorEl(null);
+
 
   useEffect(() => {
     updateDimensions();
@@ -83,9 +83,6 @@ const Navbar = () => {
     navigate("/search?" + new URLSearchParams({ search }));
   };
 
-  const handleSearchIcon = (e) => {
-    setSearchIcon(!searchIcon);
-  };
 
   return (
     <Stack mb={2}>
@@ -99,11 +96,8 @@ const Navbar = () => {
         }}
         spacing={!mobile ? 2 : 0}
       >
-        <IconButton component={Link} to={"/"}>
-            <AiFillHome />
-          </IconButton>
+        <IconButton component={Link} to={"/"}><AiFillHome /></IconButton>
 
-        
         {!navbarWidth && (
           <div>
          <IconButton onClick={handleOpen}><AiOutlineSearch /></IconButton>
@@ -126,17 +120,24 @@ const Navbar = () => {
       </div>
         )}
 
-        <HorizontalStack>
-          {mobile && (
-            <IconButton onClick={handleSearchIcon}>
-              <AiOutlineSearch />
-            </IconButton>
-          )}
-          {user ? (
+    <IconButton component={Link} to={"/posts/create"}><AiOutlinePlusCircle /></IconButton>
+
+          {user? (
             <>
-              <IconButton component={Link} to={"/messenger"}>
+            <IconButton component={Link} to={"/messenger"}>
                 <AiFillMessage />
               </IconButton>
+            </>
+          ):(
+            <>
+            <IconButton component={Link} to={"/login"}>
+                <AiFillMessage />
+              </IconButton>
+            </>
+          )}
+
+          {user ? (
+            <>
 
                <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleMenu}
                 color="inherit"><UserAvatar width={30} height={30} username={user.username} /></IconButton>
@@ -153,7 +154,7 @@ const Navbar = () => {
                   horizontal: 'right',
                 }}
                 open={Boolean(anchorEl)}
-                onClose={handleLogout}
+                onClose={handleonClose}
               >
                 <MenuItem component={Link}  to={"/users/" + username}>Profile</MenuItem>
                 <MenuItem onClick={handleLogout}>Log Out</MenuItem>
@@ -166,14 +167,8 @@ const Navbar = () => {
               </IconButton>
             </>
           )}
-        </HorizontalStack>
-      </Stack>
-      {navbarWidth && searchIcon && (
-        <Box component="form" onSubmit={handleSubmit} mt={2}>
-          <TextField size="small" label="Search for posts..." fullWidth onChange={handleChange} value={search}/>
-        </Box>
-      )}
-    </Stack>
+          </Stack>
+          </Stack>
   );
 };
 
