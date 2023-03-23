@@ -196,7 +196,7 @@ const unlikePost = async (postId, user) => {
   }
 };
 
-export default {
+export {
   getPost,
   createPost,
   updatePost,
