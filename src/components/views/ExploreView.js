@@ -15,13 +15,13 @@ import PostBrowser from "../PostBrowser";
 
 const ExploreView = () => {
   return (
-    <Container>
+    <Box sx={{ p: 2 }}>
       <Navbar />
       <GridLayout
         left={<PostBrowser createPost contentType="posts" />}
         right={<Sidebar />}
       />
-    </Container>
+    </Box>
   );
 };
 

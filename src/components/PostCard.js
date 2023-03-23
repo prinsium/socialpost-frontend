@@ -93,23 +93,7 @@ import {
     return (
       <Card sx={{ padding: 0 }} className="post-card">
         <Box className={preview}>
-          <HorizontalStack spacing={0} alignItems="initial">
-            <Stack
-              justifyContent="space-between "
-              alignItems="center"
-              spacing={1}
-              sx={{
-                backgroundColor: "grey.100",
-                width: "50px",
-                padding: theme.spacing(1),
-              }}
-            >
-              <LikeBox
-                likeCount={likeCount}
-                liked={post.liked}
-                onLike={handleLike}
-              />
-            </Stack>
+          <HorizontalStack spacing={1} alignItems="initial">
             <PostContentBox clickable={preview} post={post} editing={editing}>
               <HorizontalStack justifyContent="space-between">
                 <ContentDetails
@@ -174,12 +158,13 @@ import {
                 ))}
   
               <HorizontalStack sx={{ mt: 1 }}>
+              <LikeBox
+                likeCount={likeCount}
+                liked={post.liked}
+                onLike={handleLike}
+              />
                 <AiFillMessage />
-                <Typography
-                  variant="subtitle2"
-                  color="text.secondary"
-                  sx={{ fontWeight: "bold" }}
-                >
+                <Typography>
                   {post.commentCount}
                 </Typography>
               </HorizontalStack>
