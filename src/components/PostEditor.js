@@ -5,6 +5,7 @@ import {
     Stack,
     TextField,
     Typography,
+    IconButton,
   } from "@mui/material";
   import { Box } from "@mui/system";
   import React, { useState } from "react";
@@ -14,6 +15,7 @@ import {
   import { isLoggedIn } from "../helpers/authHelper";
   import HorizontalStack from "./util/HorizontalStack";
   import UserAvatar from "./UserAvatar";
+  import { MdHelpOutline } from "react-icons/md"
   
   const PostEditor = () => {
     const navigate = useNavigate();
@@ -62,11 +64,9 @@ import {
               <Typography variant="h6">
                 What are you thinking {user.username}?
               </Typography>
-              <Typography sx={{ padding: 0 }}>
-            <a href="https://commonmark.org/help/" target="_blank">
-              Markdown Help
-            </a>
-          </Typography>
+              <IconButton component={Link} to={"https://commonmark.org/help/"}>
+              <MdHelpOutline />
+              </IconButton>
             </HorizontalStack>
           )}
   

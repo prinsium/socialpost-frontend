@@ -4,6 +4,7 @@ import {
     Stack,
     TextField,
     Typography,
+    IconButton,
   } from "@mui/material";
   import { Box } from "@mui/system";
   import React, { useState } from "react";
@@ -12,6 +13,7 @@ import {
   import { isLoggedIn } from "../helpers/authHelper";
   import ErrorAlert from "./ErrorAlert";
   import HorizontalStack from "./util/HorizontalStack";
+  import { MdHelpOutline } from "react-icons/md";
   
   const CommentEditor = ({ label, comment, addComment, setReplying }) => {
     const [formData, setFormData] = useState({
@@ -60,9 +62,9 @@ import {
             <Typography variant="h5">
               {comment ? <>Reply</> : <>Comment</>}
             </Typography>
-            <Link to="https://commonmark.org/help/" target="_blank">
-              Markdown Help
-            </Link>
+            <IconButton component={Link} to={"https://commonmark.org/help/"}>
+              <MdHelpOutline />
+              </IconButton>
           </HorizontalStack>
   
           <Box component="form" onSubmit={handleSubmit}>
@@ -70,7 +72,7 @@ import {
               multiline
               fullWidth
               label={label}
-              rows={5}
+              rows={1}
               required
               name="content"
               sx={{

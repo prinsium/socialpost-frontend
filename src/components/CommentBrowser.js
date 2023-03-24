@@ -5,6 +5,10 @@ import { isLoggedIn } from "../helpers/authHelper";
 import Comment from "./Comment";
 import Loading from "./Loading";
 import SortBySelect from "./SortBySelect";
+import {TbMoodEmpty} from "react-icons/tb";
+import {BsCheck2Circle} from "react-icons/bs";
+import Fab from '@mui/material/Fab';
+import NavigationIcon from '@mui/icons-material/Navigation';
 
 const CommentBrowser = (props) => {
   const [comments, setComments] = useState([]);
@@ -76,14 +80,20 @@ const CommentBrowser = (props) => {
           <Stack py={5} alignItems="center">
             <Typography variant="h5" color="text.secondary" gutterBottom>
               {comments.length > 0 ? (
-                <>All comments have been viewed</>
+                <>
+                <BsCheck2Circle />
+                All comments have been viewed
+                </>
               ) : (
-                <>No comments available</>
+                <>
+                <TbMoodEmpty />
+                No comments available
+                </>
               )}
             </Typography>
-            <Button variant="text" size="small" onClick={handleBackToTop}>
-              Back to top
-            </Button>
+            <Fab variant="extended" onClick={handleBackToTop}>
+              <NavigationIcon />
+              </Fab>
           </Stack>
         </>
       )}
