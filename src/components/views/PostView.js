@@ -1,4 +1,4 @@
-import { Container, Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import GoBack from "../GoBack";
 import GridLayout from "../GridLayout";
@@ -36,7 +36,7 @@ const PostView = () => {
   }, [params.id]);
 
   return (
-    <Container>
+    <Box sx={{ p: 2 }}>
       <Navbar />
       <GoBack />
       <GridLayout
@@ -55,7 +55,7 @@ const PostView = () => {
         }
         right={<Sidebar />}
       />
-    </Container>
+    </Box>
   );
 };
 

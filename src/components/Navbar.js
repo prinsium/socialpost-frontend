@@ -16,11 +16,13 @@ import {
   AiOutlineUserAdd,
   AiOutlinePlusCircle,
 } from "react-icons/ai";
+import {BiHomeAlt2, BiChat} from "react-icons/bi"
 import { Link, useNavigate } from "react-router-dom";
 import { isLoggedIn, logoutUser } from "../helpers/authHelper";
 import UserAvatar from "./UserAvatar";
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import PostEditor from './PostEditor'
 
 const style = {
   position: 'absolute',
@@ -45,8 +47,11 @@ const Navbar = () => {
   const [width, setWindowWidth] = useState(0);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
+  const [openn, setOpenn] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const handleOpen1 = () => setOpenn(true);
+  const handleClose1 = () => setOpenn(false);
   const handleonClose = () => setAnchorEl(null);
 
 
@@ -96,7 +101,7 @@ const Navbar = () => {
         }}
         spacing={!mobile ? 2 : 0}
       >
-        <IconButton component={Link} to={"/"}><AiFillHome /></IconButton>
+        <IconButton component={Link} to={"/"}><BiHomeAlt2 /></IconButton>
 
         {!navbarWidth && (
           <div>
@@ -120,18 +125,30 @@ const Navbar = () => {
       </div>
         )}
 
-    <IconButton component={Link} to={"/posts/create"}><AiOutlinePlusCircle /></IconButton>
+    {/* <IconButton component={Link} to={"/posts/create"}><AiOutlinePlusCircle /></IconButton> */}
+    <div>
+    <IconButton onClick={handleOpen1}><AiOutlinePlusCircle /></IconButton>
+    <Modal
+        open={openn}
+        onClose={handleClose1}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      ><PostEditor />
+       
+        
+      </Modal>
+      </div>
 
           {user? (
             <>
             <IconButton component={Link} to={"/messenger"}>
-                <AiFillMessage />
+                <BiChat />
               </IconButton>
             </>
           ):(
             <>
             <IconButton component={Link} to={"/login"}>
-                <AiFillMessage />
+                <BiChat />
               </IconButton>
             </>
           )}

@@ -62,7 +62,7 @@ const MessengerView = () => {
   };
 
   return (
-    <Container>
+    <Box sx={{ p: 2 }}>
       <Navbar />
       <Box>
         <Card sx={{ padding: 0 }}>
@@ -141,7 +141,7 @@ const MessengerView = () => {
           </Grid>
         </Card>
       </Box>
-    </Container>
+      </Box>
   );
 };
 

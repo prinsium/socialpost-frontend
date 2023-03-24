@@ -11,6 +11,10 @@ import Loading from "./Loading";
 import PostCard from "./PostCard";
 import SortBySelect from "./SortBySelect";
 import HorizontalStack from "./util/HorizontalStack";
+import {TbMoodEmpty} from "react-icons/tb";
+import {BsCheck2Circle} from "react-icons/bs";
+import Fab from '@mui/material/Fab';
+import NavigationIcon from '@mui/icons-material/Navigation';
 
 const PostBrowser = (props) => {
   const [posts, setPosts] = useState([]);
@@ -150,17 +154,24 @@ const PostBrowser = (props) => {
 
         {loading && <Loading />}
         {end ? (
-          <Stack py={5} alignItems="center">
+          <Stack py={5} alignItems="center" spacing={2}>
             <Typography variant="h5" color="text.secondary" gutterBottom>
               {posts.length > 0 ? (
-                <>All posts have been viewed</>
+                <>
+                <BsCheck2Circle />
+                All posts have been viewed
+                </>
               ) : (
-                <>No posts available</>
+                <>
+                <TbMoodEmpty />
+                No posts available
+                </>
               )}
             </Typography>
-            <Button variant="text" size="small" onClick={handleBackToTop}>
-              Back to top
-            </Button>
+
+            <Fab variant="extended" onClick={handleBackToTop}>
+              <NavigationIcon />
+            </Fab>
           </Stack>
         ) : (
           !loading &&
@@ -170,9 +181,9 @@ const PostBrowser = (props) => {
               <Button onClick={fetchPosts} variant="contained">
                 Load more
               </Button>
-              <Button variant="text" size="small" onClick={handleBackToTop}>
-                Back to top
-              </Button>
+              <Fab variant="extended" onClick={handleBackToTop}>
+              <NavigationIcon />
+              </Fab>
             </Stack>
           )
         )}

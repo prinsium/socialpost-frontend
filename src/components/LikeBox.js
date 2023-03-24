@@ -1,6 +1,7 @@
 import { IconButton, Stack, Typography, useTheme } from "@mui/material";
 import React, { useState } from "react";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
+import Badge from '@mui/material/Badge';
 
 import { useNavigate } from "react-router-dom";
 import { isLoggedIn } from "../helpers/authHelper";
@@ -24,10 +25,9 @@ const LikeBox = (props) => {
 
   return (
     <>
-      <IconButton onClick={handleLike}>
-        {liked ? (<AiFillLike />) : (<AiOutlineLike />)}
-      </IconButton>
-      <Typography>{likeCount}</Typography>
+    <Badge badgeContent={likeCount} color="grey" onClick={handleLike}>
+        {liked ? (<AiFillLike color="grey" />) : (<AiOutlineLike color="grey" />)}
+    </Badge>
       </>
   );
 };

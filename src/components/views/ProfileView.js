@@ -1,4 +1,4 @@
-import { Card, Container, Stack, Tab, Tabs } from "@mui/material";
+import { Card, Box, Container, Stack, Tab, Tabs } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getUser, updateUser } from "../../api/users";
@@ -93,7 +93,7 @@ const ProfileView = () => {
   }
 
   return (
-    <Container>
+    <Box sx={{ p: 2 }}>
       <Navbar />
 
       <GridLayout
@@ -137,7 +137,7 @@ const ProfileView = () => {
           </Stack>
         }
       />
-    </Container>
+    </Box>
   );
 };
 

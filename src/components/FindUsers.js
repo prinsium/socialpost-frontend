@@ -7,7 +7,7 @@ import {
     Typography,
   } from "@mui/material";
   import React, { useEffect, useState } from "react";
-  import { AiOutlineUser } from "react-icons/ai";
+  import { AiOutlineUsergroupAdd } from "react-icons/ai";
   import { MdRefresh } from "react-icons/md";
   import { Link } from "react-router-dom";
   import { getRandomUsers } from "../api/users";
@@ -39,8 +39,8 @@ import {
         <Stack spacing={2}>
           <HorizontalStack justifyContent="space-between">
             <HorizontalStack>
-              <AiOutlineUser />
-              <Typography>Find Others</Typography>
+              <AiOutlineUsergroupAdd />
+              <Typography>Suggested for you</Typography>
             </HorizontalStack>
             <IconButton
               sx={{ padding: 0 }}
@@ -61,9 +61,8 @@ import {
               <HorizontalStack justifyContent="space-between" key={user._id}>
                 <HorizontalStack>
                   <UserAvatar width={30} height={30} username={user.username} />
-                  <Typography>{user.username}</Typography>
+                  <Typography component={Link} to={"/users/" + user.username}>{user.username}</Typography>
                 </HorizontalStack>
-                <Link to={"/users/" + user.username}>View</Link>
               </HorizontalStack>
             ))
           )}

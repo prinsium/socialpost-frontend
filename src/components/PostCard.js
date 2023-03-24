@@ -25,7 +25,7 @@ import {
   import "./postCard.css";
   import { MdCancel } from "react-icons/md";
   import { BiTrash } from "react-icons/bi";
-  import { BsReplyFill } from "react-icons/bs";
+  import Badge from '@mui/material/Badge';
   
   const PostCard = (props) => {
     const { preview, removePost } = props;
@@ -156,17 +156,12 @@ import {
                     <Markdown content={post.content} />
                   </Box>
                 ))}
-  
-              <HorizontalStack sx={{ mt: 1 }}>
-              <LikeBox
-                likeCount={likeCount}
-                liked={post.liked}
-                onLike={handleLike}
-              />
-                <AiFillMessage />
-                <Typography>
-                  {post.commentCount}
-                </Typography>
+              <HorizontalStack sx={{ mt: 3 }}>
+            <Badge> 
+              <LikeBox likeCount={likeCount} liked={post.liked} onLike={handleLike} /></Badge>
+              
+              <Badge badgeContent={post.commentCount}>
+                <AiFillMessage color="grey" /></Badge>
               </HorizontalStack>
             </PostContentBox>
           </HorizontalStack>

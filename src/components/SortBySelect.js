@@ -6,9 +6,7 @@ import HorizontalStack from "./util/HorizontalStack";
 const SortBySelect = ({ onSortBy, sortBy, sorts }) => {
   return (
     <HorizontalStack spacing={1}>
-      <Typography color="text.secondary" variant="subtitle2">
-        Sort by:
-      </Typography>
+
       <Select
         size="small"
         value={sorts[sortBy]}

@@ -54,22 +54,21 @@ import {
     };
   
     return (
-      <Card>
+      <Card sx={{ mx: 'auto', maxWidth: 600, mt: 3 }}>
         <Stack spacing={1}>
           {user && (
             <HorizontalStack spacing={2}>
-              <UserAvatar width={50} height={50} username={user.username} />
-              <Typography variant="h5">
-                What would you like to post today {user.username}?
+              <UserAvatar width={30} height={30} username={user.username} />
+              <Typography variant="h6">
+                What are you thinking {user.username}?
               </Typography>
-            </HorizontalStack>
-          )}
-  
-          <Typography>
+              <Typography sx={{ padding: 0 }}>
             <a href="https://commonmark.org/help/" target="_blank">
               Markdown Help
             </a>
           </Typography>
+            </HorizontalStack>
+          )}
   
           <Box component="form" onSubmit={handleSubmit}>
             <TextField
@@ -86,7 +85,7 @@ import {
               fullWidth
               label="Content"
               multiline
-              rows={10}
+              rows={7}
               name="content"
               margin="normal"
               onChange={handleChange}
