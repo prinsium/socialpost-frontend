@@ -4,6 +4,8 @@ import {
   Stack,
   TextField,
   Modal,
+  Fab,
+  AppBar
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
@@ -16,7 +18,7 @@ import {
   AiOutlineUserAdd,
   AiOutlinePlusCircle,
 } from "react-icons/ai";
-import {BiHomeAlt2, BiChat} from "react-icons/bi"
+import {BiHomeAlt2, BiChat, BiSearch} from "react-icons/bi"
 import { Link, useNavigate } from "react-router-dom";
 import { isLoggedIn, logoutUser } from "../helpers/authHelper";
 import UserAvatar from "./UserAvatar";
@@ -90,14 +92,16 @@ const Navbar = () => {
 
 
   return (
-    <Stack mb={2}>
+    <AppBar style={{backgroundColor: '#F5F4F4'}} mb={2}>
       <Stack
         direction="row"
         alignItems="center"
         justifyContent="space-between"
         sx={{
-          pt: 2,
-          pb: 0,
+          ml: 2,
+          mr: 2,
+          pt: 1,
+          pb: 1,
         }}
         spacing={!mobile ? 2 : 0}
       >
@@ -120,6 +124,8 @@ const Navbar = () => {
                onChange={handleChange}
                value={search}
              />
+             <IconButton onClick={handleSubmit}>
+             <BiSearch /></IconButton>
         </Box>
       </Modal>
       </div>
@@ -185,7 +191,7 @@ const Navbar = () => {
             </>
           )}
           </Stack>
-          </Stack>
+          </AppBar>
   );
 };
 

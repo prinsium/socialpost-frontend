@@ -21,7 +21,7 @@ import {
   
     const fetchUsers = async () => {
       setLoading(true);
-      const data = await getRandomUsers({ size: 5 });
+      const data = await getRandomUsers({ size: 9 });
       setLoading(false);
       setUsers(data);
     };
