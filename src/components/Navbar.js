@@ -1,29 +1,12 @@
 import { useTheme } from "@emotion/react";
-import {
-  IconButton,
-  Stack,
-  TextField,
-  Modal,
-  Fab,
-  AppBar
-} from "@mui/material";
-import { Box } from "@mui/system";
+import { IconButton, Stack, TextField, Modal, AppBar, useScrollTrigger, Slide, Box, Menu, MenuItem } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import "react-icons/ai";
-import "react-icons/ri";
-import {
-  AiFillHome,
-  AiFillMessage,
-  AiOutlineSearch,
-  AiOutlineUserAdd,
-  AiOutlinePlusCircle,
-} from "react-icons/ai";
+import { AiFillHome, AiFillMessage, AiOutlineSearch, AiOutlineUserAdd, AiOutlinePlusCircle } from "react-icons/ai";
 import {BiHomeAlt2, BiChat, BiSearch} from "react-icons/bi"
 import { Link, useNavigate } from "react-router-dom";
+
 import { isLoggedIn, logoutUser } from "../helpers/authHelper";
 import UserAvatar from "./UserAvatar";
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
 import PostEditor from './PostEditor'
 
 const style = {
@@ -37,6 +20,19 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
+
+function HideOnScroll(props) {
+  const { children, window } = props;
+  const trigger = useScrollTrigger({
+    target: window ? window() : undefined,
+  });
+
+  return (
+    <Slide appear={false} direction="up" in={!trigger}>
+      {children}
+    </Slide>
+  );
+}
 
 
 const Navbar = () => {
@@ -92,7 +88,8 @@ const Navbar = () => {
 
 
   return (
-    <AppBar style={{backgroundColor: '#F5F4F4'}} mb={2}>
+    <HideOnScroll>
+    <AppBar position="fixed" sx={{ top: 'auto', bottom: 0, backgroundColor: '#1b252f'}}>
       <Stack
         direction="row"
         alignItems="center"
@@ -107,8 +104,6 @@ const Navbar = () => {
       >
         <IconButton component={Link} to={"/"}><BiHomeAlt2 /></IconButton>
 
-        {!navbarWidth && (
-          <div>
          <IconButton onClick={handleOpen}><AiOutlineSearch /></IconButton>
       <Modal
         open={open}
@@ -116,7 +111,7 @@ const Navbar = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} component="form" onSubmit={handleSubmit}>
+        <Box sx={style} component="form" direction="row" alignItems="center" onSubmit={handleSubmit}>
              <TextField
                size="small"
               label="Search "
@@ -128,10 +123,7 @@ const Navbar = () => {
              <BiSearch /></IconButton>
         </Box>
       </Modal>
-      </div>
-        )}
 
-    {/* <IconButton component={Link} to={"/posts/create"}><AiOutlinePlusCircle /></IconButton> */}
     <div>
     <IconButton onClick={handleOpen1}><AiOutlinePlusCircle /></IconButton>
     <Modal
@@ -139,29 +131,22 @@ const Navbar = () => {
         onClose={handleClose1}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-      ><PostEditor />
-       
-        
+      ><PostEditor /> 
       </Modal>
-      </div>
 
+      </div>
           {user? (
             <>
-            <IconButton component={Link} to={"/messenger"}>
-                <BiChat />
-              </IconButton>
+            <IconButton component={Link} to={"/messenger"}><BiChat /></IconButton>
             </>
           ):(
             <>
-            <IconButton component={Link} to={"/login"}>
-                <BiChat />
-              </IconButton>
+            <IconButton component={Link} to={"/login"}><BiChat /></IconButton>
             </>
           )}
 
           {user ? (
             <>
-
                <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleMenu}
                 color="inherit"><UserAvatar width={30} height={30} username={user.username} /></IconButton>
                 <Menu
@@ -185,13 +170,12 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <IconButton component={Link} to={"/login"}>
-                <AiOutlineUserAdd />
-              </IconButton>
+              <IconButton component={Link} to={"/login"}><AiOutlineUserAdd /></IconButton>
             </>
           )}
           </Stack>
           </AppBar>
+          </HideOnScroll>
   );
 };
 
