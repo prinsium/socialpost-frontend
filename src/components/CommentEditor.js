@@ -14,6 +14,7 @@ import {
   import ErrorAlert from "./ErrorAlert";
   import HorizontalStack from "./util/HorizontalStack";
   import { MdHelpOutline } from "react-icons/md";
+  import { BiMessageSquareAdd } from "react-icons/bi";
   
   const CommentEditor = ({ label, comment, addComment, setReplying }) => {
     const [formData, setFormData] = useState({
@@ -72,7 +73,8 @@ import {
               multiline
               fullWidth
               label={label}
-              rows={1}
+              minRows={1}
+              maxRows={4}
               required
               name="content"
               sx={{
@@ -84,7 +86,10 @@ import {
             />
   
             <ErrorAlert error={error} sx={{ my: 4 }} />
-            <Button
+            <IconButton type="submit">
+              <BiMessageSquareAdd />
+            </IconButton>
+            {/* <Button
               variant="outlined"
               type="submit"
               fullWidth
@@ -95,7 +100,7 @@ import {
               }}
             >
               {loading ? <div>Submitting</div> : <div>Submit</div>}
-            </Button>
+            </Button> */}
           </Box>
         </Stack>
       </Card>

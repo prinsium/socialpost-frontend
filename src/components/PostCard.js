@@ -160,8 +160,8 @@ import {
             <Badge> 
               <LikeBox likeCount={likeCount} liked={post.liked} onLike={handleLike} /></Badge>
               
-              <Badge badgeContent={post.commentCount}>
-                <AiFillMessage color="grey" /></Badge>
+              <Badge badgeContent={post.commentCount} >
+                <AiFillMessage color="#adbfcf" /></Badge>
               </HorizontalStack>
             </PostContentBox>
           </HorizontalStack>

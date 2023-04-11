@@ -228,7 +228,7 @@ import {
       >
         <AiFillMessage size={80} />
         <Typography variant="h5">Capybaras Messenger</Typography>
-        <Typography color="text.secondary">
+        <Typography>
           Privately message other users
         </Typography>
       </Stack>

@@ -3,7 +3,7 @@ import { IconButton, Stack, TextField, Modal, AppBar, useScrollTrigger, Slide, B
 import React, { useEffect, useState } from "react";
 import { AiFillHome, AiFillMessage, AiOutlineSearch, AiOutlineUserAdd, AiOutlinePlusCircle } from "react-icons/ai";
 import {BiHomeAlt2, BiChat, BiSearch} from "react-icons/bi"
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import { isLoggedIn, logoutUser } from "../helpers/authHelper";
 import UserAvatar from "./UserAvatar";
@@ -51,6 +51,7 @@ const Navbar = () => {
   const handleOpen1 = () => setOpenn(true);
   const handleClose1 = () => setOpenn(false);
   const handleonClose = () => setAnchorEl(null);
+  
 
 
   useEffect(() => {
@@ -87,9 +88,10 @@ const Navbar = () => {
   };
 
 
+
   return (
     <HideOnScroll>
-    <AppBar position="fixed" sx={{ top: 'auto', bottom: 0, backgroundColor: '#1b252f'}}>
+    <AppBar position="fixed" sx={{ top: 'auto', bottom: 0, backgroundColor: '#1b252f'}} elevation={24}>
       <Stack
         direction="row"
         alignItems="center"
@@ -102,9 +104,9 @@ const Navbar = () => {
         }}
         spacing={!mobile ? 2 : 0}
       >
-        <IconButton component={Link} to={"/"}><BiHomeAlt2 /></IconButton>
+        <IconButton size="large" sx={{color: '#adbfcf'}} component={Link} to={"/"}><BiHomeAlt2 /></IconButton>
 
-         <IconButton onClick={handleOpen}><AiOutlineSearch /></IconButton>
+         <IconButton size="large" sx={{color: '#adbfcf'}} onClick={handleOpen}><AiOutlineSearch /></IconButton>
       <Modal
         open={open}
         onClose={handleClose}
@@ -125,7 +127,7 @@ const Navbar = () => {
       </Modal>
 
     <div>
-    <IconButton onClick={handleOpen1}><AiOutlinePlusCircle /></IconButton>
+    <IconButton size="large" sx={{color: '#adbfcf'}} onClick={handleOpen1}><AiOutlinePlusCircle /></IconButton>
     <Modal
         open={openn}
         onClose={handleClose1}
@@ -137,18 +139,18 @@ const Navbar = () => {
       </div>
           {user? (
             <>
-            <IconButton component={Link} to={"/messenger"}><BiChat /></IconButton>
+            <IconButton size="large" sx={{color: '#adbfcf'}} component={Link} to={"/messenger"}><BiChat /></IconButton>
             </>
           ):(
             <>
-            <IconButton component={Link} to={"/login"}><BiChat /></IconButton>
+            <IconButton size="large" sx={{color: '#adbfcf'}} component={Link} to={"/login"}><BiChat /></IconButton>
             </>
           )}
 
           {user ? (
             <>
                <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleMenu}
-                color="inherit"><UserAvatar width={30} height={30} username={user.username} /></IconButton>
+                sx={{color: '#adbfcf'}}><UserAvatar width={30} height={30} username={user.username} /></IconButton>
                 <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
@@ -170,7 +172,7 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <IconButton component={Link} to={"/login"}><AiOutlineUserAdd /></IconButton>
+              <IconButton size="large" sx={{color: '#adbfcf'}} component={Link} to={"/login"}><AiOutlineUserAdd /></IconButton>
             </>
           )}
           </Stack>

@@ -62,10 +62,9 @@ const MessengerView = () => {
   };
 
   return (
-    <Box sx={{ p: 2 }}>
+    <Box sx={{ p: 2, color: '#1b252f', backgroundColor: '#1b252f' }}>
       <Navbar />
       <Box>
-        <Card sx={{ padding: 0 }}>
           <Grid
             container
             sx={{ height: "calc(100vh - 110px)" }}
@@ -139,7 +138,6 @@ const MessengerView = () => {
               </Grid>
             )}
           </Grid>
-        </Card>
       </Box>
       </Box>
   );
