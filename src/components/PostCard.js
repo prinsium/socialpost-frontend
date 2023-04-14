@@ -91,10 +91,10 @@ import {
     };
   
     return (
-      <Card sx={{ padding: 0 }} className="post-card">
+      <Card variant="outlined" sx={{ padding: 0 }} >
         <Box className={preview}>
-          <HorizontalStack spacing={1} alignItems="initial">
-            <PostContentBox clickable={preview} post={post} editing={editing}>
+          
+            <PostContentBox clickable={preview} post={post} editing={editing} >
               <HorizontalStack justifyContent="space-between">
                 <ContentDetails
                   username={post.poster.username}
@@ -156,16 +156,20 @@ import {
                     <Markdown content={post.content} />
                   </Box>
                 ))}
-              <HorizontalStack sx={{ mt: 3 }}>
-            <Badge> 
-              <LikeBox likeCount={likeCount} liked={post.liked} onLike={handleLike} /></Badge>
-              
-              <Badge badgeContent={post.commentCount} >
-                <AiFillMessage color="#adbfcf" /></Badge>
-              </HorizontalStack>
-            </PostContentBox>
-          </HorizontalStack>
+                 </PostContentBox>
+          
         </Box>
+              <HorizontalStack sx={{ m: 1, p: 1 }}>
+            <Badge> 
+              <LikeBox sx={{ "&:hover": {cursor: "pointer" }}} likeCount={likeCount} liked={post.liked} onLike={handleLike} /></Badge>
+              
+              <Box sx={{ "&:hover": {cursor: "pointer" }}} onClick={() => navigate("/posts/" + post._id)}>
+              <Badge badgeContent={post.commentCount} >
+                <AiFillMessage color="#adbfcf" />
+              </Badge>
+              </Box>
+              </HorizontalStack>
+           
       </Card>
     );
   };

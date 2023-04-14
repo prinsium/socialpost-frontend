@@ -15,15 +15,14 @@ const PostContentBox = (props) => {
         <Box
           sx={{
             padding: theme.spacing(2),
-            width: "92%",
-            "&:hover": { backgroundColor: "grey.50", cursor: "pointer" },
+            "&:hover": {cursor: "pointer" },
           }}
           onClick={() => navigate("/posts/" + post._id)}
         >
           {props.children}
         </Box>
       ) : (
-        <Box sx={{ padding: theme.spacing(2), width: "90%" }}>
+        <Box sx={{ padding: theme.spacing(2) }}>
           {props.children}
         </Box>
       )}

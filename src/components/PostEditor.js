@@ -6,9 +6,9 @@ import {
     TextField,
     Typography,
     IconButton,
+    Box,
   } from "@mui/material";
-  import { Box } from "@mui/system";
-  import React, { useState } from "react";
+  import React, { useState, useRef } from "react";
   import { useNavigate } from "react-router-dom";
   import { createPost } from "../api/posts";
   import ErrorAlert from "./ErrorAlert";
@@ -21,6 +21,7 @@ import {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
   
+
     const [formData, setFormData] = useState({
       title: "",
       content: "",
@@ -29,7 +30,8 @@ import {
     const [serverError, setServerError] = useState("");
     const [errors, setErrors] = useState({});
     const user = isLoggedIn();
-  
+    const file = useRef();
+
     const handleChange = (e) => {
       setFormData({ ...formData, [e.target.name]: e.target.value });
       const errors = validate();
@@ -40,7 +42,7 @@ import {
       e.preventDefault();
   
       setLoading(true);
-      const data = await createPost(formData, isLoggedIn());
+      const data = await createPost(formData,  isLoggedIn());
       setLoading(false);
       if (data && data.error) {
         setServerError(data.error);
@@ -56,24 +58,24 @@ import {
     };
   
     return (
-      <Card sx={{ mx: 'auto', maxWidth: 600, mt: 3 }}>
+      <Card sx={{ maxWidth: 600, p:2 }}>
         <Stack spacing={1}>
           {user && (
             <HorizontalStack spacing={2}>
-              <UserAvatar width={30} height={30} username={user.username} />
-              <Typography variant="h6">
-                What are you thinking {user.username}?
-              </Typography>
               <IconButton component={Link} to={"https://commonmark.org/help/"}>
               <MdHelpOutline />
               </IconButton>
             </HorizontalStack>
           )}
-  
+
           <Box component="form" onSubmit={handleSubmit}>
             <TextField
               fullWidth
-              label="Title"
+              variant="standard"
+              placeholder="Title"
+              multiline
+              minRows={1}
+              maxRows={10}
               required
               name="title"
               margin="normal"
@@ -83,9 +85,11 @@ import {
             />
             <TextField
               fullWidth
-              label="Content"
+              variant="standard"
+              placeholder="Content"
               multiline
-              rows={7}
+              minRows={1}
+              maxRows={10}
               name="content"
               margin="normal"
               onChange={handleChange}

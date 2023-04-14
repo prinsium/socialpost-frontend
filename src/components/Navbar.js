@@ -1,24 +1,38 @@
 import { useTheme } from "@emotion/react";
-import { IconButton, Stack, TextField, Modal, AppBar, useScrollTrigger, Slide, Box, Menu, MenuItem } from "@mui/material";
+import { IconButton, Stack, TextField, Modal, AppBar, useScrollTrigger, Slide, Box, Menu, MenuItem, Divider } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { AiFillHome, AiFillMessage, AiOutlineSearch, AiOutlineUserAdd, AiOutlinePlusCircle } from "react-icons/ai";
-import {BiHomeAlt2, BiChat, BiSearch} from "react-icons/bi"
+import { AiOutlineUserAdd, AiOutlinePlusCircle } from "react-icons/ai";
+import {BiHomeAlt2, BiMessageSquareDetail, BiSearch} from "react-icons/bi"
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import { isLoggedIn, logoutUser } from "../helpers/authHelper";
 import UserAvatar from "./UserAvatar";
 import PostEditor from './PostEditor'
 
-const style = {
+const style1 = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  minWidth: 200,
+  maxWidth: 600,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
+};
+
+const style2 = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  minWidth: 200,
+  maxWidth: 600,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 2,
 };
 
 function HideOnScroll(props) {
@@ -91,38 +105,38 @@ const Navbar = () => {
 
   return (
     <HideOnScroll>
-    <AppBar position="fixed" sx={{ top: 'auto', bottom: 0, backgroundColor: '#1b252f'}} elevation={24}>
+    <AppBar position="fixed" sx={{ top: 'auto', bottom: 0}} elevation={24}>
       <Stack
         direction="row"
         alignItems="center"
         justifyContent="space-between"
-        sx={{
-          ml: 2,
-          mr: 2,
-          pt: 1,
-          pb: 1,
-        }}
+        sx={{ ml: 2, mr: 2, pt: 1, pb: 1,}}
         spacing={!mobile ? 2 : 0}
       >
         <IconButton size="large" sx={{color: '#adbfcf'}} component={Link} to={"/"}><BiHomeAlt2 /></IconButton>
 
-         <IconButton size="large" sx={{color: '#adbfcf'}} onClick={handleOpen}><AiOutlineSearch /></IconButton>
+         <IconButton size="large" sx={{color: '#adbfcf'}} onClick={handleOpen}><BiSearch /></IconButton>
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} component="form" direction="row" alignItems="center" onSubmit={handleSubmit}>
+        <Box sx={style1} component="form" direction="row" alignItems="center" onSubmit={handleSubmit}>
+        <Box sx={{display: 'flex', alignItems: 'center', border: '1px solid',}} fullWidth >
              <TextField
-               size="small"
-              label="Search "
-               sx={{ flexGrow: 1, maxWidth: 300 }}
-               onChange={handleChange}
-               value={search}
+              fullWidth
+              variant="standard"
+              size="small"
+              placeholder="Search"
+              sx={{m:1, p:1}}
+              onChange={handleChange}
+              value={search}
              />
-             <IconButton onClick={handleSubmit}>
+             <Divider orientation="vertical" flexItem />
+             <IconButton sx={{m:1, p:1}} onClick={handleSubmit}>
              <BiSearch /></IconButton>
+        </Box>
         </Box>
       </Modal>
 
@@ -133,17 +147,20 @@ const Navbar = () => {
         onClose={handleClose1}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-      ><PostEditor /> 
+      >
+        <Box sx={style2}>
+        <PostEditor /> 
+        </Box>
       </Modal>
 
       </div>
           {user? (
             <>
-            <IconButton size="large" sx={{color: '#adbfcf'}} component={Link} to={"/messenger"}><BiChat /></IconButton>
+            <IconButton size="large" sx={{color: '#adbfcf'}} component={Link} to={"/messenger"}><BiMessageSquareDetail /></IconButton>
             </>
           ):(
             <>
-            <IconButton size="large" sx={{color: '#adbfcf'}} component={Link} to={"/login"}><BiChat /></IconButton>
+            <IconButton size="large" sx={{color: '#adbfcf'}} component={Link} to={"/login"}><BiMessageSquareDetail /></IconButton>
             </>
           )}
 

@@ -1,4 +1,4 @@
-import { Button, IconButton, Typography, useTheme } from "@mui/material";
+import { Button, Card, IconButton, Typography, useTheme } from "@mui/material";
 import { Box, compose } from "@mui/system";
 import React, { useState } from "react";
 import { AiFillEdit, AiOutlineLine, AiOutlinePlus } from "react-icons/ai";
@@ -58,15 +58,10 @@ const Comment = (props) => {
   };
 
   let style = {
-    backgroundColor: theme.palette.grey[100],
     borderRadius: 1.5,
     mb: theme.spacing(2),
     padding: theme.spacing(0),
   };
-
-  if (depth % 2 === 1) {
-    style.backgroundColor = "white";
-  }
 
   return (
     <Box sx={style}>
@@ -93,11 +88,12 @@ const Comment = (props) => {
         ) : (
           <HorizontalStack justifyContent="space-between">
             <HorizontalStack>
+              <Card >
               <ContentDetails
                 username={comment.commenter.username}
                 createdAt={comment.createdAt}
                 edited={comment.edited}
-              />
+              /></Card>
 
               <IconButton
                 color="primary"

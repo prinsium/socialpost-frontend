@@ -15,7 +15,7 @@ import PostBrowser from "../PostBrowser";
 
 const ExploreView = () => {
   return (
-    <Box sx={{ p: 2, color: '#1b252f', backgroundColor: '#1b252f' }}>
+    <Box sx={{ p: 2 }}>
       <Navbar />
       <GridLayout
         left={<PostBrowser createPost contentType="posts" />}

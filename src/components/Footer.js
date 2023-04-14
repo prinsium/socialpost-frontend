@@ -1,15 +1,12 @@
-import { Card, Grid, Link, Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import { Card } from "@mui/material";
 import React from "react";
 import Copyright from "./Copyright";
 
 const Footer = () => {
   return (
-    <Box pb={3}>
-      <Card>
+      <Card sx={{m:1, p:1}} variant="outlined">
         <Copyright />
       </Card>
-    </Box>
   );
 };
 

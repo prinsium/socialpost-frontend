@@ -68,7 +68,7 @@ import {
               </IconButton>
           </HorizontalStack>
   
-          <Box component="form" onSubmit={handleSubmit}>
+          <Box component="form" onSubmit={handleSubmit} sx={{display: 'flex', flexGrow: 1, m: 3, p: 2}} >
             <TextField
               multiline
               fullWidth
@@ -77,9 +77,6 @@ import {
               maxRows={4}
               required
               name="content"
-              sx={{
-                backgroundColor: "white",
-              }}
               onChange={handleChange}
               onFocus={handleFocus}
               value={formData.content}
@@ -89,18 +86,6 @@ import {
             <IconButton type="submit">
               <BiMessageSquareAdd />
             </IconButton>
-            {/* <Button
-              variant="outlined"
-              type="submit"
-              fullWidth
-              disabled={loading}
-              sx={{
-                backgroundColor: "white",
-                mt: 2,
-              }}
-            >
-              {loading ? <div>Submitting</div> : <div>Submit</div>}
-            </Button> */}
           </Box>
         </Stack>
       </Card>

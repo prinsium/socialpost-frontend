@@ -121,7 +121,7 @@ const PostBrowser = (props) => {
   return (
     <>
       <Stack spacing={2}>
-        <Card>
+        <Card variant="otlined">
           <HorizontalStack justifyContent="space-between">
         
             <SortBySelect

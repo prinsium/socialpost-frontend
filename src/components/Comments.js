@@ -123,10 +123,10 @@ const Comments = () => {
           paddingY={3}
         >
           <Box>
-            <Typography variant="h5" color="text.secondary" gutterBottom>
+            <Typography variant="h5" gutterBottom>
               No comments yet...
             </Typography>
-            <Typography variant="body" color="text.secondary">
+            <Typography variant="body" >
               Be the first one to comment!
             </Typography>
           </Box>

@@ -5,11 +5,11 @@ import {
     IconButton,
     Stack,
     Typography,
+    Link
   } from "@mui/material";
   import React, { useEffect, useState } from "react";
   import { AiOutlineUsergroupAdd } from "react-icons/ai";
   import { MdRefresh } from "react-icons/md";
-  import { Link } from "react-router-dom";
   import { getRandomUsers } from "../api/users";
   import Loading from "./Loading";
   import UserAvatar from "./UserAvatar";
@@ -35,8 +35,8 @@ import {
     };
   
     return (
-      <Card>
-        <Stack spacing={2}>
+      <Card variant="outlined" >
+        <Stack spacing={2} sx={{ p:2}}>
           <HorizontalStack justifyContent="space-between">
             <HorizontalStack>
               <AiOutlineUsergroupAdd />
@@ -61,7 +61,11 @@ import {
               <HorizontalStack justifyContent="space-between" key={user._id}>
                 <HorizontalStack>
                   <UserAvatar width={30} height={30} username={user.username} />
-                  <Typography component={Link} to={"/users/" + user.username}>{user.username}</Typography>
+                  <Typography > 
+                    <Link underline="none" color="white" href={"/users/" + user.username}>
+                      {user.username}
+                    </Link>
+                    </Typography>
                 </HorizontalStack>
               </HorizontalStack>
             ))
