@@ -1,31 +1,35 @@
-import {
-  Button,
-  Card,
-  IconButton,
-  Stack,
-  Typography,
-  useTheme,
-} from "@mui/material";
-import { Box } from "@mui/system";
+import {Box, Card, IconButton, Stack, Typography, useTheme, Badge } from "@mui/material";
 import React, { useState } from "react";
-import { AiFillCheckCircle, AiFillEdit, AiFillMessage } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+
+import { AiFillCheckCircle, AiFillMessage } from "react-icons/ai";
+import {RxCrossCircled} from "react-icons/rx";
+import {FiEdit2, FiTrash} from "react-icons/fi";
+import { BiMessageSquare, BiMessageSquareDots } from "react-icons/bi";
+
 import { deletePost, likePost, unlikePost, updatePost } from "../api/posts";
 import { isLoggedIn } from "../helpers/authHelper";
 import ContentDetails from "./ContentDetails";
-
 import LikeBox from "./LikeBox";
 import PostContentBox from "./PostContentBox";
 import HorizontalStack from "./util/HorizontalStack";
-
-import {} from "react-icons/ai";
 import ContentUpdateEditor from "./ContentUpdateEditor";
 import Markdown from "./Markdown";
 
 import "./postCard.css";
-import { MdCancel } from "react-icons/md";
-import { BiTrash } from "react-icons/bi";
-import Badge from '@mui/material/Badge';
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  minWidth: 200,
+  maxWidth: 600,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 2,
+};
 
 const PostCard = (props) => {
   const { preview, removePost } = props;
@@ -115,9 +119,9 @@ const PostCard = (props) => {
                       onClick={handleEditPost}
                     >
                       {editing ? (
-                        <MdCancel color={iconColor} />
+                        <RxCrossCircled color={iconColor} />
                       ) : (
-                        <AiFillEdit color={iconColor} />
+                        <FiEdit2 color={iconColor} />
                       )}
                     </IconButton>
                     <IconButton
@@ -128,7 +132,7 @@ const PostCard = (props) => {
                       {confirm ? (
                         <AiFillCheckCircle color={theme.palette.error.main} />
                       ) : (
-                        <BiTrash color={theme.palette.error.main} />
+                        <FiTrash color={theme.palette.error.main} />
                       )}
                     </IconButton>
                   </HorizontalStack>
@@ -149,15 +153,26 @@ const PostCard = (props) => {
               (editing ? (
                 <ContentUpdateEditor
                   handleSubmit={handleSubmit}
+                  originalTitle={post.title}
                   originalContent={post.content}
                 />
               ) : (
+                <Box>
+                <Box
+                  maxHeight={maxHeight}
+                  overflow="hidden"
+                  className="title"
+                >
+                  <Markdown title={post.title} />
+                </Box>
+
                 <Box
                   maxHeight={maxHeight}
                   overflow="hidden"
                   className="content"
                 >
                   <Markdown content={post.content} />
+                </Box>
                 </Box>
               ))}
                </PostContentBox>
@@ -169,7 +184,7 @@ const PostCard = (props) => {
             
             <Box sx={{ "&:hover": {cursor: "pointer" }}} onClick={() => navigate("/posts/" + post._id)}>
             <Badge badgeContent={post.commentCount} >
-              <AiFillMessage color="#adbfcf" />
+              {post.commentCount===0?(<BiMessageSquare  size="24px" />):(<BiMessageSquareDots  size="24px" />)}
             </Badge>
             </Box>
             </HorizontalStack>

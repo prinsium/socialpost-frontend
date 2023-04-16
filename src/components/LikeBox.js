@@ -1,4 +1,4 @@
-import { IconButton, Stack, Typography, useTheme } from "@mui/material";
+import { Box, Stack, Typography, useTheme } from "@mui/material";
 import React, { useState } from "react";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 import Badge from '@mui/material/Badge';
@@ -25,11 +25,11 @@ const LikeBox = (props) => {
   };
 
   return (
-    <>
+    <Box sx={{ "&:hover": {cursor: "pointer" }}} >
     <Badge badgeContent={likeCount} color="grey" onClick={handleLike}>
-        {liked ? (<MdOutlineFavorite color="grey" />) : (<MdOutlineFavoriteBorder color="grey" />)}
+        {liked ? (<MdOutlineFavorite color="red"  size="24px" />) : (<MdOutlineFavoriteBorder size="24px" />)}
     </Badge>
-      </>
+      </Box>
   );
 };
 
