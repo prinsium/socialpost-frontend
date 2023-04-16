@@ -107,7 +107,7 @@ import {
                 mt: 2,
               }}
             >
-              {loading ? <>Submitting</> : <>Submit</>}
+              {loading ? <>Posting</> : <>Post</>}
             </Button>
           </Box>
         </Stack>
