@@ -113,9 +113,9 @@ const Navbar = () => {
         sx={{ ml: 2, mr: 2, pt: 1, pb: 1,}}
         spacing={!mobile ? 2 : 0}
       >
-        <IconButton size="large" sx={{color: '#adbfcf'}} component={Link} to={"/"}><BiHomeAlt2 /></IconButton>
+        <IconButton size="large" component={Link} to={"/"}><BiHomeAlt2 /></IconButton>
 
-         <IconButton size="large" sx={{color: '#adbfcf'}} onClick={handleOpen}><BiSearch /></IconButton>
+         <IconButton size="large" onClick={handleOpen}><BiSearch /></IconButton>
       <Modal
         open={open}
         onClose={handleClose}
@@ -141,7 +141,7 @@ const Navbar = () => {
       </Modal>
 
     <div>
-    <IconButton size="large" sx={{color: '#adbfcf'}} onClick={handleOpen1}><AiOutlinePlusCircle /></IconButton>
+    <IconButton size="large" onClick={handleOpen1}><AiOutlinePlusCircle /></IconButton>
     <Modal
         open={openn}
         onClose={handleClose1}
@@ -156,18 +156,18 @@ const Navbar = () => {
       </div>
           {user? (
             <>
-            <IconButton size="large" sx={{color: '#adbfcf'}} component={Link} to={"/messenger"}><BiMessageSquareDetail /></IconButton>
+            <IconButton size="large" component={Link} to={"/messenger"}><BiMessageSquareDetail /></IconButton>
             </>
           ):(
             <>
-            <IconButton size="large" sx={{color: '#adbfcf'}} component={Link} to={"/login"}><BiMessageSquareDetail /></IconButton>
+            <IconButton size="large" component={Link} to={"/login"}><BiMessageSquareDetail /></IconButton>
             </>
           )}
 
           {user ? (
             <>
                <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleMenu}
-                sx={{color: '#adbfcf'}}><UserAvatar width={30} height={30} username={user.username} /></IconButton>
+              ><UserAvatar width={30} height={30} username={user.username} /></IconButton>
                 <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
@@ -189,7 +189,7 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <IconButton size="large" sx={{color: '#adbfcf'}} component={Link} to={"/login"}><AiOutlineUserAdd /></IconButton>
+              <IconButton size="large" component={Link} to={"/login"}><AiOutlineUserAdd /></IconButton>
             </>
           )}
           </Stack>

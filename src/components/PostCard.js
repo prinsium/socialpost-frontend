@@ -121,7 +121,7 @@ const PostCard = (props) => {
                       {editing ? (
                         <RxCrossCircled color={iconColor} />
                       ) : (
-                        <FiEdit2 color={iconColor} />
+                        <FiEdit2 color= '#adbfcf' />
                       )}
                     </IconButton>
                     <IconButton
@@ -132,7 +132,7 @@ const PostCard = (props) => {
                       {confirm ? (
                         <AiFillCheckCircle color={theme.palette.error.main} />
                       ) : (
-                        <FiTrash color={theme.palette.error.main} />
+                        <FiTrash color= '#adbfcf' />
                       )}
                     </IconButton>
                   </HorizontalStack>

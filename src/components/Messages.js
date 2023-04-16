@@ -1,18 +1,9 @@
-import {
-    Button,
-    Divider,
-    FormControl,
-    IconButton,
-    InputAdornment,
-    InputLabel,
-    OutlinedInput,
-    Stack,
-    Typography,
-  } from "@mui/material";
-  import { Box } from "@mui/system";
+  import {Box, Divider, IconButton, Stack, Typography, Link } from "@mui/material";
   import React, { useEffect, useRef, useState } from "react";
-  import { AiFillBackward, AiFillCaretLeft, AiFillMessage } from "react-icons/ai";
-  import { Link } from "react-router-dom";
+
+  import { AiFillCaretLeft } from "react-icons/ai";
+  import {BiMessageSquareDetail} from "react-icons/bi";
+
   import { getMessages, sendMessage } from "../api/messages";
   import { isLoggedIn } from "../helpers/authHelper";
   import { socket } from "../helpers/socketHelper";
@@ -187,7 +178,7 @@ import {
                 width={30}
               />
               <Typography>
-                <Link to={"/users/" + props.conservant.username}>
+                <Link underline="none" color="white" href={"/users/" + props.conservant.username}>
                   <b>{props.conservant.username}</b>
                 </Link>
               </Typography>
@@ -226,7 +217,7 @@ import {
         alignItems="center"
         spacing={2}
       >
-        <AiFillMessage size={80} />
+        <BiMessageSquareDetail size={80} />
         <Typography variant="h5">Capybaras Messenger</Typography>
         <Typography>
           Privately message other users

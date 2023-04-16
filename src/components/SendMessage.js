@@ -1,16 +1,10 @@
-import {
-    Button,
-    FormControl,
-    InputAdornment,
-    InputLabel,
-    OutlinedInput,
-    Stack,
-    TextField,
-  } from "@mui/material";
+  import { IconButton, Stack, TextField,} from "@mui/material";
   import React, { useEffect, useState } from "react";
+
   import { sendMessage } from "../api/messages";
   import { isLoggedIn } from "../helpers/authHelper";
   import HorizontalStack from "./util/HorizontalStack";
+  import {BsFillArrowRightSquareFill} from "react-icons/bs";
   
   const SendMessage = (props) => {
     const [content, setContent] = useState("");
@@ -31,7 +25,7 @@ import {
         <HorizontalStack>
           <TextField
             onChange={(e) => setContent(e.target.value)}
-            label="Send a message..."
+            placeholder="Send a message..."
             fullWidth
             value={content}
             autoComplete="off"
@@ -43,9 +37,9 @@ import {
             }}
           />
   
-          <Button onClick={handleSendMessage} disabled={content.length === 0}>
-            Send
-          </Button>
+          <IconButton onClick={handleSendMessage} disabled={content.length === 0}>
+            <BsFillArrowRightSquareFill />
+          </IconButton>
         </HorizontalStack>
       </Stack>
     );

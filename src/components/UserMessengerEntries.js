@@ -5,7 +5,7 @@ import Loading from "./Loading";
 import UserMessengerEntry from "./UserMessengerEntry";
 import HorizontalStack from "./util/HorizontalStack";
 import "react-icons/bi";
-import { BiSad } from "react-icons/bi";
+import { BiSad, BiMessageSquareDetail } from "react-icons/bi";
 
 const UserMessengerEntries = (props) => {
   return !props.loading ? (
@@ -17,7 +17,7 @@ const UserMessengerEntries = (props) => {
             spacing={2}
             sx={{ px: 2, height: "60px" }}
           >
-            <AiFillMessage size={30} />
+            <BiMessageSquareDetail size={30} />
             <Typography>
               <b>Your Conversations</b>
             </Typography>

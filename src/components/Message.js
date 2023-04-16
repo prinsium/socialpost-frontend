@@ -34,7 +34,6 @@ const Message = (props) => {
       <Card
         sx={{
           borderRadius: "25px",
-          backgroundColor: styles.messageColor,
           borderWidth: "1px",
           paddingY: "12px",
           maxWidth: "70%",
