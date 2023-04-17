@@ -163,7 +163,7 @@ const Comment = (props) => {
                   comment={comment}
                   addComment={addComment}
                   setReplying={setReplying}
-                  label="What are your thoughts on this comment?"
+                  placeholder="Comment Your Thoughts..."
                 />
               </Box>
             )}

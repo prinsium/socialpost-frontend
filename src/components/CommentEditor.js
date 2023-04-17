@@ -72,7 +72,7 @@ import {
             <TextField
               multiline
               fullWidth
-              label={label}
+              placeholder={label}
               minRows={1}
               maxRows={4}
               required

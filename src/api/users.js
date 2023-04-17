@@ -69,4 +69,21 @@ const updateUser = async (user, data) => {
   }
 };
 
+const follow = async (user, followingId) => {
+  try {
+    const res = await fetch(BASE_URL + "api/users/follow/" + user._id, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        "x-access-token": user.token,
+      },
+      body: JSON.stringify({followingId})
+    })
+    return await response.json()
+  } catch(err) {
+    console.log(err)
+  }
+}
+
 export { signup, login, getUser, getRandomUsers, updateUser };
