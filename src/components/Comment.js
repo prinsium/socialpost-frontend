@@ -1,8 +1,8 @@
-import { Button, Card, IconButton, Typography, useTheme } from "@mui/material";
+import { Button, Card, IconButton, Typography, useTheme, Link } from "@mui/material";
 import { Box, compose } from "@mui/system";
 import React, { useState } from "react";
 import { AiFillEdit, AiOutlineLine, AiOutlinePlus } from "react-icons/ai";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { isLoggedIn } from "../helpers/authHelper";
 import CommentEditor from "./CommentEditor";
 import ContentDetails from "./ContentDetails";
@@ -64,6 +64,7 @@ const Comment = (props) => {
   };
 
   return (
+    <Card variant="outlined" >
     <Box sx={style}>
       <Box
         sx={{
@@ -76,7 +77,7 @@ const Comment = (props) => {
         {props.profile ? (
           <Box>
             <Typography variant="h6">
-              <Link underline="hover" to={"/posts/" + comment.post._id}>
+              <Link underline="hover" href={"/posts/" + comment.post._id}>
                 {comment.post.title}
               </Link>
             </Typography>
@@ -185,6 +186,7 @@ const Comment = (props) => {
         )}
       </Box>
     </Box>
+    </Card>
   );
 };
 

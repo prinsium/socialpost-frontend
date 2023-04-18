@@ -4,12 +4,14 @@ import {
   Button,
   Card,
   Divider,
+  IconButton,
   Stack,
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
-import { AiFillEdit } from "react-icons/ai";
+import {FiEdit2} from "react-icons/fi";
+import { MdCancel } from "react-icons/md";
 import { isLoggedIn } from "../helpers/authHelper";
 import ContentUpdateEditor from "./ContentUpdateEditor";
 import Footer from "./Footer";
@@ -30,7 +32,7 @@ const Profile = (props) => {
   }, [props.profile]);
 
   return (
-    <Card>
+    <Card variant="outlined">
       {user ? (
         <Stack alignItems="center" spacing={2}>
           <Box my={1}>
@@ -49,23 +51,19 @@ const Profile = (props) => {
             </Box>
           ) : user.biography ? (
             <Typography textAlign="center" variant="p">
-              <b>Bio: </b>
               {user.biography}
             </Typography>
           ) : (
             <Typography variant="p">
-              <i>No bio yet</i>
+              No bio yet
             </Typography>
           )}
 
           {currentUser && user._id === currentUser.userId && (
             <Box>
-              <Button
-                startIcon={<AiFillEdit color={iconColor} />}
-                onClick={props.handleEditing}
-              >
-                {props.editing ? <>Cancel</> : <>Edit bio</>}
-              </Button>
+              <IconButton onClick={props.handleEditing}>
+                {props.editing ? <MdCancel /> : <FiEdit2 />}
+              </IconButton>
             </Box>
           )}
 

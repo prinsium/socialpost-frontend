@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
-import { AiFillEdit } from "react-icons/ai";
+import {FiEdit2} from "react-icons/fi";
 import { MdCancel } from "react-icons/md";
 import { isLoggedIn } from "../helpers/authHelper";
 import ContentUpdateEditor from "./ContentUpdateEditor";
@@ -45,13 +45,13 @@ const MobileProfile = (props) => {
               <HorizontalStack spacing={3}>
                 <Stack alignItems="center">
                   <Typography>Likes</Typography>
-                  <Typography color="text.secondary">
+                  <Typography >
                     <b>{props.profile.posts.likeCount}</b>
                   </Typography>
                 </Stack>
                 <Stack alignItems="center">
-                  <Typography color="text.secondary">Posts</Typography>
-                  <Typography color="text.secondary">
+                  <Typography >Posts</Typography>
+                  <Typography >
                     <b>{props.profile.posts.count}</b>
                   </Typography>
                 </Stack>
@@ -63,27 +63,24 @@ const MobileProfile = (props) => {
             {currentUser && user._id === currentUser.userId && (
               <IconButton onClick={props.handleEditing} sx={{ mr: 1 }}>
                 {props.editing ? (
-                  <MdCancel color={iconColor} />
+                  <MdCancel  />
                 ) : (
-                  <AiFillEdit color={iconColor} />
+                  <FiEdit2 />
                 )}
               </IconButton>
             )}
             {user.biography ? (
               <>
                 <Typography textAlign="center" variant="p">
-                  <b>Bio: </b>
                   {user.biography}
                 </Typography>
               </>
             ) : (
               <Typography variant="p">
-                <i>
                   No bio yet{" "}
                   {currentUser && user._id === currentUser.userId && (
                     <span>- Tap on the edit icon to add your bio</span>
                   )}
-                </i>
               </Typography>
             )}
             {currentUser && user._id !== currentUser.userId && (

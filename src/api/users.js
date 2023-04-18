@@ -80,10 +80,24 @@ const follow = async (user, followingId) => {
       },
       body: JSON.stringify({followingId})
     })
-    return await response.json()
+    return res.json();
   } catch(err) {
     console.log(err)
   }
 }
 
-export { signup, login, getUser, getRandomUsers, updateUser };
+const unfollow = async (user, followingId) => {
+  try {
+    const res = await fetch(BASE_URL + "api/users/follow/" + user._id, {
+      method: 'DELETE',
+      headers: {
+        "x-access-token": user.token,
+      },
+    })
+    return res.json();
+  } catch(err) {
+    console.log(err)
+  }
+}
+
+export { signup, login, getUser, getRandomUsers, updateUser, follow, unfollow,  };

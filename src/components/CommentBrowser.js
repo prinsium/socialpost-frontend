@@ -65,7 +65,7 @@ const CommentBrowser = (props) => {
 
   return (
     <Stack spacing={2}>
-      <Card>
+      <Card variant="outlined">
         <SortBySelect onSortBy={handleSortBy} sortBy={sortBy} sorts={sorts} />
       </Card>
       {loading ? (

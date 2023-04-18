@@ -14,7 +14,7 @@ const PostContentBox = (props) => {
       {clickable && !editing ? (
         <Box
           sx={{
-            padding: theme.spacing(2),
+            padding: theme.spacing(1),
             "&:hover": {cursor: "pointer" },
           }}
           onClick={() => navigate("/posts/" + post._id)}
@@ -22,7 +22,7 @@ const PostContentBox = (props) => {
           {props.children}
         </Box>
       ) : (
-        <Box sx={{ padding: theme.spacing(2) }}>
+        <Box sx={{ padding: theme.spacing(1) }}>
           {props.children}
         </Box>
       )}

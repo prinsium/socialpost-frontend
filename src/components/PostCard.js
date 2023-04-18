@@ -13,7 +13,7 @@ import ContentDetails from "./ContentDetails";
 import LikeBox from "./LikeBox";
 import PostContentBox from "./PostContentBox";
 import HorizontalStack from "./util/HorizontalStack";
-import ContentUpdateEditor from "./ContentUpdateEditor";
+import PostUpdateEditor from "./PostUpdateEditor";
 import Markdown from "./Markdown";
 
 import "./postCard.css";
@@ -139,11 +139,11 @@ const PostCard = (props) => {
                 )}
               </Box>
             </HorizontalStack>
-
+              <Box sx={{ml:1, mr:1, pl:1, pr:1}}>
             <Typography
               variant="h5"
               gutterBottom
-              sx={{ overflow: "hidden", mt: 1, maxHeight: 125 }}
+              sx={{ overflow: "hidden", maxHeight: 125 }}
               className="title"
             >
               {post.title}
@@ -151,7 +151,7 @@ const PostCard = (props) => {
 
             {preview !== "secondary" &&
               (editing ? (
-                <ContentUpdateEditor
+                <PostUpdateEditor
                   handleSubmit={handleSubmit}
                   originalTitle={post.title}
                   originalContent={post.content}
@@ -175,6 +175,7 @@ const PostCard = (props) => {
                 </Box>
                 </Box>
               ))}
+              </Box>
                </PostContentBox>
         
       </Box>
