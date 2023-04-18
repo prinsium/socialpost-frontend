@@ -1,19 +1,34 @@
 import { createTheme } from "@mui/material";
 
-const theme = createTheme({
+const lightTheme = createTheme({
+  palette: {
+    mode: 'light',
+  },
+  components: {
+    MuiLink: {
+      styleOverrides: {
+        root: ({ ownerState, theme }) => ({
+          ...{
+            color: "#f0f0f0",
+          },
+        }),
+      },
+    },}})
+
+const darkTheme = createTheme({
   palette: {
     mode: 'dark',
   },
   components: {
-  //   MuiBadge: {
-  //     styleOverrides: {
-  //       root: ({ ownerState, theme }) => ({
-  //         ...{
-  //           color: "#adbfcf",
-  //         },
-  //       }),
-  //     },
-  //   },
+    MuiLink: {
+      styleOverrides: {
+        root: ({ ownerState, theme }) => ({
+          ...{
+            color: "#adbfcf",
+          },
+        }),
+      },
+    },
   //   MuiCard: {
   //     defaultProps: {
   //       variant: "outlined"
@@ -91,4 +106,4 @@ const theme = createTheme({
   },
 });
 
-export default theme;
+export {darkTheme, lightTheme};

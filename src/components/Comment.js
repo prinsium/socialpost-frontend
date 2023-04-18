@@ -89,12 +89,12 @@ const Comment = (props) => {
         ) : (
           <HorizontalStack justifyContent="space-between">
             <HorizontalStack>
-              <Card >
+              
               <ContentDetails
                 username={comment.commenter.username}
                 createdAt={comment.createdAt}
                 edited={comment.edited}
-              /></Card>
+              />
 
               <IconButton
                 color="primary"
@@ -108,7 +108,7 @@ const Comment = (props) => {
               </IconButton>
             </HorizontalStack>
             {!minimised && (
-              <HorizontalStack spacing={1}>
+              <HorizontalStack >
                 <IconButton
                   variant="text"
                   size="small"
@@ -121,7 +121,7 @@ const Comment = (props) => {
                   )}
                 </IconButton>
                 {user && (isAuthor || user.isAdmin) && (
-                  <HorizontalStack spacing={1}>
+                  <HorizontalStack >
                     <IconButton
                       variant="text"
                       size="small"
@@ -148,7 +148,7 @@ const Comment = (props) => {
         )}
 
         {!minimised && (
-          <Box sx={{ mt: 1 }} overflow="hidden">
+          <Box overflow="hidden">
             {!editing ? (
               <Markdown content={comment.content} />
             ) : (
@@ -159,7 +159,7 @@ const Comment = (props) => {
             )}
 
             {replying && !minimised && (
-              <Box sx={{ mt: 2 }}>
+              <Box>
                 <CommentEditor
                   comment={comment}
                   addComment={addComment}

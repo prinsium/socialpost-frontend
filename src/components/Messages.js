@@ -178,7 +178,7 @@
                 width={30}
               />
               <Typography>
-                <Link underline="none" color="white" href={"/users/" + props.conservant.username}>
+                <Link underline="none" href={"/users/" + props.conservant.username}>
                   <b>{props.conservant.username}</b>
                 </Link>
               </Typography>

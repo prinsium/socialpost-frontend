@@ -1,33 +1,3 @@
-// import React from 'react';
-// import './App.css';
-
-// import { Navbar } from './components/Navbar';
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route
-// } from "react-router-dom";
-// import Signup from './components/Signup';
-// import Login from './components/Login';
-
-// function App() {
-
-//   return (
-//     <div>
-//         <Router>
-//           <Navbar/>
-//         <Routes>
-//         {/* <Route exact path='/Home' element={<Home/>}/>
-//         <Route exact path='/About' element={<About/>}/> */}
-//         <Route exact path='/Login' element={<Login/>}/>
-//         <Route exact path='/Signup' element={<Signup/>}/>
-//         </Routes>
-//         </Router>
-// </div>
-//   )
-// }
-
-// export default App;
 import "@mui/material";
 import "react-icons";
 import "react-icons/bi";
@@ -36,7 +6,8 @@ import "react-icons/bs";
 import "react-router-dom";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
-
+import { useState } from "react";
+import { createTheme, Switch } from "@mui/material";
 import {
   BrowserRouter,
   Route,
@@ -44,7 +15,7 @@ import {
   useParams,
   useSearchParams,
 } from "react-router-dom";
-import theme from "./theme";
+// import {darkTheme, lightTheme} from "./theme";
 
 import PostView from "./components/views/PostView";
 import CreatePostView from "./components/views/CreatePostView";
@@ -63,9 +34,20 @@ import { io } from "socket.io-client";
 function App() {
   initiateSocketConnection();
 
+  const [theme, settheme] = useState(false);
+  const darkTheme = createTheme({
+      palette: {
+          mode: theme ? 'dark' : 'light',
+      },
+  });
+  const handleChange = (event) => {
+      settheme(event.target.checked);
+  }
+
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={darkTheme}>
       <BrowserRouter>
+      <Switch checked={theme} color='success' onChange={handleChange} />
         <CssBaseline />
         <Routes>
           <Route path="/" element={<ExploreView />} />

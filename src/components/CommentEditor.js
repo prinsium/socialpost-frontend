@@ -57,7 +57,7 @@ import {
     };
   
     return (
-      <Card>
+      <Card variant="outlined">
         <Stack spacing={2}>
           <HorizontalStack justifyContent="space-between">
             <Typography variant="h5">

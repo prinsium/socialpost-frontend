@@ -5,7 +5,7 @@ const Copyright = () => {
   return (
     <Typography variant="subtitle1">
       Copyright © 2023{" "}
-      <Link href="/" color="white" underline="hover">
+      <Link href="/" underline="hover">
        Capybaras
       </Link>
     </Typography>
