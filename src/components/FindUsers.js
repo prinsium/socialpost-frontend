@@ -62,7 +62,7 @@ import {
                 <HorizontalStack>
                   <UserAvatar width={30} height={30} username={user.username} />
                   <Typography > 
-                    <Link underline="none" href={"/users/" + user.username}>
+                    <Link underline="none" color="inherit" href={"/users/" + user.username}>
                       {user.username}
                     </Link>
                     </Typography>

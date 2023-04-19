@@ -1,10 +1,10 @@
-import { Avatar } from "@mui/material";
+
 import React from "react";
+import Avatar, { genConfig } from 'react-nice-avatar';
 
 const UserAvatar = ({ username, height, width }) => {
   return (
-    <Avatar sx={{ height: height, width: width, backgroundColor: "lightgray"}} src={"https://robohash.org/" + username}
-    />
+    <Avatar style={{ width: width, height: height }} src={username} />
   );
 };
 

@@ -105,7 +105,7 @@ const Navbar = () => {
 
   return (
     <HideOnScroll>
-    <AppBar position="fixed" sx={{ top: 'auto', bottom: 0}} elevation={24}>
+    <AppBar position="fixed" sx={{ top: 'auto', bottom: 0}} elevation={24} color="default" enableColorOnLight>
       <Stack
         direction="row"
         alignItems="center"

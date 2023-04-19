@@ -14,7 +14,7 @@ const ContentDetails = ({ username, createdAt, edited, preview }) => {
       </ListItemAvatar>
       <ListItemText 
       primary={<Typography>
-        <Link underline="none"
+        <Link underline="none" color="inherit"
           onClick={(e) => {e.stopPropagation()}}
           href={"/users/" + username}
         >

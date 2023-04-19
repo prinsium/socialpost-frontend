@@ -77,7 +77,7 @@ const Comment = (props) => {
         {props.profile ? (
           <Box>
             <Typography variant="h6">
-              <Link underline="hover" href={"/posts/" + comment.post._id}>
+              <Link underline="hover" color="inherit" href={"/posts/" + comment.post._id}>
                 {comment.post.title}
               </Link>
             </Typography>
@@ -128,9 +128,9 @@ const Comment = (props) => {
                       onClick={() => setEditing(!editing)}
                     >
                       {editing ? (
-                        <MdCancel color={iconColor} />
+                        <MdCancel />
                       ) : (
-                        <AiFillEdit color={iconColor} />
+                        <AiFillEdit />
                       )}
                     </IconButton>
                     <IconButton
@@ -138,7 +138,7 @@ const Comment = (props) => {
                       size="small"
                       onClick={handleDelete}
                     >
-                      <BiTrash color={theme.palette.error.main} />
+                      <BiTrash />
                     </IconButton>
                   </HorizontalStack>
                 )}
