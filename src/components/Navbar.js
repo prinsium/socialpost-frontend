@@ -19,7 +19,7 @@ const style1 = {
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
-  p: 4,
+  p: 2,
 };
 
 const style2 = {
@@ -29,6 +29,8 @@ const style2 = {
   transform: 'translate(-50%, -50%)',
   minWidth: 200,
   maxWidth: 600,
+  minHeight: 130,
+  maxHeight: 500,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -129,7 +131,7 @@ const Navbar = () => {
               variant="standard"
               size="small"
               placeholder="Search"
-              sx={{m:1, p:1}}
+              sx={{ p:1}}
               onChange={handleChange}
               value={search}
              />

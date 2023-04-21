@@ -1,14 +1,15 @@
-import { Button, Card, Stack, Typography } from "@mui/material";
+import { IconButton, Card, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
+
+import {TbMoodEmpty} from "react-icons/tb";
+import {BsCheck2Circle, BsArrowUpCircle} from "react-icons/bs";
+
 import { getUserComments } from "../api/posts";
 import { isLoggedIn } from "../helpers/authHelper";
+import HorizontalStack from "./util/HorizontalStack";
 import Comment from "./Comment";
 import Loading from "./Loading";
 import SortBySelect from "./SortBySelect";
-import {TbMoodEmpty} from "react-icons/tb";
-import {BsCheck2Circle} from "react-icons/bs";
-import Fab from '@mui/material/Fab';
-import NavigationIcon from '@mui/icons-material/Navigation';
 
 const CommentBrowser = (props) => {
   const [comments, setComments] = useState([]);
@@ -65,9 +66,10 @@ const CommentBrowser = (props) => {
 
   return (
     <Stack spacing={2}>
-      <Card variant="outlined">
+      <HorizontalStack justifyContent="space-between">
         <SortBySelect onSortBy={handleSortBy} sortBy={sortBy} sorts={sorts} />
-      </Card>
+        </HorizontalStack>
+      
       {loading ? (
         <Loading />
       ) : (
@@ -91,9 +93,9 @@ const CommentBrowser = (props) => {
                 </>
               )}
             </Typography>
-            <Fab variant="extended" onClick={handleBackToTop}>
-              <NavigationIcon />
-              </Fab>
+            <IconButton variant="extended" onClick={handleBackToTop}>
+              <BsArrowUpCircle />
+              </IconButton>
           </Stack>
         </>
       )}

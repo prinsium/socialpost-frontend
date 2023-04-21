@@ -22,9 +22,9 @@ const ContentDetails = ({ username, createdAt, edited, preview }) => {
         </Link>
         </Typography>}
         secondary={!preview && (
-          <p>
+          <Typography sx={{fontSize: '70%'}}>
             {edited && <>Edited&nbsp;</>}<Moment fromNow>{createdAt}</Moment>
-            </p>
+            </Typography>
         )} />
         </ListItem>
       </List>

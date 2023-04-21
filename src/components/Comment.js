@@ -1,8 +1,13 @@
-import { Button, Card, IconButton, Typography, useTheme, Link } from "@mui/material";
-import { Box, compose } from "@mui/system";
+import { Box, Card, IconButton, Typography, useTheme, Link } from "@mui/material";
 import React, { useState } from "react";
-import { AiFillEdit, AiOutlineLine, AiOutlinePlus } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import Moment from "react-moment";
+
+import { AiFillEdit, AiOutlineLine, AiOutlinePlus } from "react-icons/ai";
+import { MdCancel } from "react-icons/md";
+import {FiEdit2, FiTrash} from "react-icons/fi";
+import { HiReply } from "react-icons/hi";
+
 import { isLoggedIn } from "../helpers/authHelper";
 import CommentEditor from "./CommentEditor";
 import ContentDetails from "./ContentDetails";
@@ -10,10 +15,6 @@ import HorizontalStack from "./util/HorizontalStack";
 import { deleteComment, updateComment } from "../api/posts";
 import ContentUpdateEditor from "./ContentUpdateEditor";
 import Markdown from "./Markdown";
-import { MdCancel } from "react-icons/md";
-import { BiReply, BiTrash } from "react-icons/bi";
-import { BsReply, BsReplyFill } from "react-icons/bs";
-import Moment from "react-moment";
 
 const Comment = (props) => {
   const theme = useTheme();
@@ -68,7 +69,7 @@ const Comment = (props) => {
     <Box sx={style}>
       <Box
         sx={{
-          pl: theme.spacing(2),
+          pl: theme.spacing(1),
           pt: theme.spacing(1),
           pb: theme.spacing(1),
           pr: 1,
@@ -96,10 +97,7 @@ const Comment = (props) => {
                 edited={comment.edited}
               />
 
-              <IconButton
-                color="primary"
-                onClick={() => setMinimised(!minimised)}
-              >
+              <IconButton onClick={() => setMinimised(!minimised)}>
                 {minimised ? (
                   <AiOutlinePlus size={15} />
                 ) : (
@@ -115,9 +113,9 @@ const Comment = (props) => {
                   onClick={handleSetReplying}
                 >
                   {!replying ? (
-                    <BsReplyFill color={iconColor} />
+                    <HiReply />
                   ) : (
-                    <MdCancel color={iconColor} />
+                    <MdCancel />
                   )}
                 </IconButton>
                 {user && (isAuthor || user.isAdmin) && (
@@ -130,7 +128,7 @@ const Comment = (props) => {
                       {editing ? (
                         <MdCancel />
                       ) : (
-                        <AiFillEdit />
+                        <FiEdit2 />
                       )}
                     </IconButton>
                     <IconButton
@@ -138,7 +136,7 @@ const Comment = (props) => {
                       size="small"
                       onClick={handleDelete}
                     >
-                      <BiTrash />
+                      <FiTrash />
                     </IconButton>
                   </HorizontalStack>
                 )}
@@ -164,7 +162,7 @@ const Comment = (props) => {
                   comment={comment}
                   addComment={addComment}
                   setReplying={setReplying}
-                  placeholder="Comment Your Thoughts..."
+                  label="Reply..."
                 />
               </Box>
             )}

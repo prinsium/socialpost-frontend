@@ -58,7 +58,7 @@ import {
     };
   
     return (
-      <Card sx={{ maxWidth: 600, p:2 }}>
+      <Card sx={{ maxWidth: 600, maxHeight: 500, p:2 }}>
         <Stack spacing={1}>
           {user && (
             <HorizontalStack spacing={2}>
@@ -75,7 +75,7 @@ import {
               placeholder="Title"
               multiline
               minRows={1}
-              maxRows={10}
+              maxRows={3}
               required
               name="title"
               margin="normal"
@@ -89,7 +89,7 @@ import {
               placeholder="Content"
               multiline
               minRows={1}
-              maxRows={10}
+              maxRows={6}
               name="content"
               margin="normal"
               onChange={handleChange}

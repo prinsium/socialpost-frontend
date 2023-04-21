@@ -98,7 +98,7 @@ const Comments = () => {
     <Stack spacing={2}>
       <CommentEditor
         addComment={addComment}
-        label="What are your thoughts on this post?"
+        label="Comment Your Thoughts..."
       />
 
       {comments.length > 0 ? (

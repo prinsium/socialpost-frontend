@@ -37,10 +37,10 @@ const TopPosts = () => {
 
   return (
     <Stack spacing={2}>
-      <Card>
+      <Card variant="outlined" sx={{p:2}} >
         <HorizontalStack>
           <MdLeaderboard />
-          <Typography>Top Posts</Typography>
+          <Typography>Other Posts</Typography>
         </HorizontalStack>
       </Card>
       {!loading ? (

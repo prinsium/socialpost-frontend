@@ -1,12 +1,4 @@
-import {
-    Button,
-    Card,
-    Stack,
-    TextField,
-    Typography,
-    IconButton,
-  } from "@mui/material";
-  import { Box } from "@mui/system";
+import { Box, InputAdornment , Card, Stack, TextField, Typography, IconButton} from "@mui/material";
   import React, { useState } from "react";
   import { Link, useNavigate, useParams } from "react-router-dom";
   import { createComment } from "../api/posts";
@@ -58,20 +50,17 @@ import {
   
     return (
       <Card variant="outlined">
-        <Stack spacing={2}>
-          <HorizontalStack justifyContent="space-between">
-            <Typography variant="h5">
-              {comment ? <>Reply</> : <>Comment</>}
-            </Typography>
-            <IconButton component={Link} to={"https://commonmark.org/help/"}>
-              <MdHelpOutline />
-              </IconButton>
-          </HorizontalStack>
-  
-          <Box component="form" onSubmit={handleSubmit} sx={{display: 'flex', flexGrow: 1, m: 3, p: 2}} >
+          <Box component="form" onSubmit={handleSubmit} sx={{display: 'flex', flexGrow: 1, m: 1, p: 2}} >
             <TextField
               multiline
               fullWidth
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <IconButton component={Link} to={"https://commonmark.org/help/"}> <MdHelpOutline /> </IconButton>
+                  </InputAdornment>
+                ),
+              }}
               placeholder={label}
               minRows={1}
               maxRows={4}
@@ -87,7 +76,6 @@ import {
               <BiMessageSquareAdd />
             </IconButton>
           </Box>
-        </Stack>
       </Card>
     );
   };

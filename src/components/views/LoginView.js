@@ -1,20 +1,17 @@
-import {
-    Alert,
-    Button,
-    Checkbox,
-    Container,
-    FormControlLabel,
-    Stack,
-    TextField,
-    Typography,
-  } from "@mui/material";
-  import { Box } from "@mui/system";
+  import {Box, Button, Container, Stack, styled, TextField, Typography, Link} from "@mui/material"; 
+
   import React, { useState } from "react";
-  import { Link, useNavigate } from "react-router-dom";
+  import { useNavigate } from "react-router-dom";
   import { login } from "../../api/users";
-  import Copyright from "../Copyright";
   import ErrorAlert from "../ErrorAlert";
   import { loginUser } from "../../helpers/authHelper";
+
+  const MaterialUIText = styled(Typography)(({ theme }) => ({ 
+    fontSize: 50,
+    background: "-webkit-linear-gradient(45deg, #51ff8e 40%, #3300ff 20%)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent" 
+  }))
   
   const LoginView = () => {
     const navigate = useNavigate();
@@ -45,16 +42,16 @@ import {
     return (
       <Container maxWidth={"xs"} sx={{ mt: 6 }}>
         <Stack alignItems="center">
-          <Typography variant="h2" color="text.secondary" sx={{ mb: 6 }}>
-            <Link to="/" color="inherit" underline="none">
-              capybaras
-            </Link>
-          </Typography>
+      <Box sx={{m:2}}>
+      <Link href="/" underline="hover">
+      <MaterialUIText> Capybaras</MaterialUIText>
+      </Link>
+      </Box>
           <Typography variant="h5" gutterBottom>
             Login
           </Typography>
-          <Typography color="text.secondary">
-            Don't have an account yet? <Link to="/signup">Sign Up</Link>
+          <Typography>
+            Don't have an account yet? <Link href="/signup">Sign Up</Link>
           </Typography>
           <Box component="form" onSubmit={handleSubmit}>
             <TextField
@@ -83,9 +80,6 @@ import {
             <Button type="submit" fullWidth variant="contained" sx={{ my: 2 }}>
               Login
             </Button>
-          </Box>
-          <Box sx={{ mt: 3 }}>
-            <Copyright />
           </Box>
         </Stack>
       </Container>

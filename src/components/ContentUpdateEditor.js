@@ -1,5 +1,6 @@
-import { Box, Button, Stack, TextField } from "@mui/material";
+import { Box, IconButton, Stack, TextField } from "@mui/material";
 import React, { useState } from "react";
+import {BiMessageSquareAdd} from "react-icons/bi";
 
 const ContentUpdateEditor = (props) => {
   const [content, setContent] = useState(props.originalContent);
@@ -27,8 +28,7 @@ const ContentUpdateEditor = (props) => {
   };
 
   return (
-    <Box component="form" onSubmit={handleSubmit}>
-      <Stack>
+    <Box component="form" onSubmit={handleSubmit} sx={{display: 'flex', flexGrow: 1, p: 2}}>
         <TextField
           value={content}
           fullWidth
@@ -39,13 +39,9 @@ const ContentUpdateEditor = (props) => {
           helperText={error}
           multiline
         />
-        <Button
-          type="submit"
-          variant="outlined"
-        >
-          Update
-        </Button>
-      </Stack>
+        <IconButton type="submit">
+              <BiMessageSquareAdd />
+         </IconButton>
     </Box>
   );
 };

@@ -1,20 +1,15 @@
-import { Button, Card, Link, Stack, Typography } from "@mui/material";
+import { Button, Card, Link, Stack, Typography, Box, IconButton } from "@mui/material";
 import { alignProperty } from "@mui/material/styles/cssUtils";
-import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
-import { MdSettingsInputAntenna } from "react-icons/md";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { getPosts, getUserLikedPosts } from "../api/posts";
 import { isLoggedIn } from "../helpers/authHelper";
-import CreatePost from "./CreatePost";
 import Loading from "./Loading";
 import PostCard from "./PostCard";
 import SortBySelect from "./SortBySelect";
 import HorizontalStack from "./util/HorizontalStack";
 import {TbMoodEmpty} from "react-icons/tb";
-import {BsCheck2Circle} from "react-icons/bs";
-import Fab from '@mui/material/Fab';
-import NavigationIcon from '@mui/icons-material/Navigation';
+import {BsCheck2Circle, BsArrowUpCircle} from "react-icons/bs";
 
 const PostBrowser = (props) => {
   const [posts, setPosts] = useState([]);
@@ -168,10 +163,9 @@ const PostBrowser = (props) => {
                 </>
               )}
             </Typography>
-
-            <Fab variant="extended" onClick={handleBackToTop}>
-              <NavigationIcon />
-            </Fab>
+            <IconButton onClick={handleBackToTop}>
+              <BsArrowUpCircle />
+            </IconButton>
           </Stack>
         ) : (
           !loading &&
@@ -181,9 +175,9 @@ const PostBrowser = (props) => {
               <Button onClick={fetchPosts} variant="contained">
                 Load more
               </Button>
-              <Fab variant="extended" onClick={handleBackToTop}>
-              <NavigationIcon />
-              </Fab>
+              <IconButton onClick={handleBackToTop}>
+              <BsArrowUpCircle />
+              </IconButton>
             </Stack>
           )
         )}

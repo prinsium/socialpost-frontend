@@ -5,7 +5,7 @@ import GridLayout from "../GridLayout";
 import Loading from "../Loading";
 import Navbar from "../Navbar";
 import PostCard from "../PostCard";
-import Sidebar from "../Sidebar";
+import TopPosts from "../TopPosts";
 import { useParams } from "react-router-dom";
 import { getPost } from "../../api/posts";
 import Comments from "../Comments";
@@ -53,7 +53,11 @@ const PostView = () => {
             error && <ErrorAlert error={error} />
           )
         }
-        right={<Sidebar />}
+        right={
+          <Stack spacing={2}>
+            <TopPosts />
+          </Stack>
+        }
       />
     </Box>
   );
