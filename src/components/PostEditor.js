@@ -1,20 +1,10 @@
-import {
-    Button,
-    Card,
-    Link,
-    Stack,
-    TextField,
-    Typography,
-    IconButton,
-    Box,
-  } from "@mui/material";
+  import {Button, Card, Stack, TextField, Typography, IconButton, Box,} from "@mui/material";
   import React, { useState, useRef } from "react";
-  import { useNavigate } from "react-router-dom";
+  import { Link, useNavigate } from "react-router-dom";
   import { createPost } from "../api/posts";
   import ErrorAlert from "./ErrorAlert";
   import { isLoggedIn } from "../helpers/authHelper";
   import HorizontalStack from "./util/HorizontalStack";
-  import UserAvatar from "./UserAvatar";
   import { MdHelpOutline } from "react-icons/md"
   
   const PostEditor = () => {

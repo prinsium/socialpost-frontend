@@ -1,7 +1,6 @@
-import { Box, Stack, Typography, useTheme } from "@mui/material";
+import { Box, Stack, Typography, useTheme, Badge } from "@mui/material";
 import React, { useState } from "react";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
-import Badge from '@mui/material/Badge';
 import { MdOutlineFavoriteBorder, MdOutlineFavorite } from "react-icons/md";
 
 import { useNavigate } from "react-router-dom";

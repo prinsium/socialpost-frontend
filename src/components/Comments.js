@@ -1,5 +1,5 @@
-import { Stack, Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import { Stack, Typography, Box } from "@mui/material";
+
 import React, { useEffect, useState } from "react";
 import Comment from "./Comment";
 import Loading from "./Loading";

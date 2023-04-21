@@ -47,8 +47,8 @@
     const validate = () => {
       const errors = {};
   
-      if (!isLength(formData.username, { min: 6, max: 30 })) {
-        errors.username = "Must be between 6 and 30 characters long";
+      if (!isLength(formData.username, { min: 4, max: 30 })) {
+        errors.username = "Must be between 4 and 30 characters long";
       }
   
       if (contains(formData.username, " ")) {

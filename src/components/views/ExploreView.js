@@ -1,5 +1,5 @@
-import { Button, Card, Container, Stack, Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import { Button, Card, Container, Stack, Typography, Box } from "@mui/material";
+
 import React, { useEffect, useState } from "react";
 import { getPosts } from "../../api/posts";
 import { isLoggedIn } from "../../helpers/authHelper";

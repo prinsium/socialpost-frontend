@@ -1,15 +1,6 @@
-import {
-    Divider,
-    ListItem,
-    ListItemAvatar,
-    ListItemButton,
-    ListItemText,
-    MenuItem,
-  } from "@mui/material";
-  import { Box } from "@mui/system";
+  import { Box, Divider, ListItem, ListItemAvatar, ListItemButton, ListItemText, MenuItem} from "@mui/material";
   import React from "react";
   import UserAvatar from "./UserAvatar";
-  
   import moment from "moment";
   
   const UserMessengerEntry = (props) => {

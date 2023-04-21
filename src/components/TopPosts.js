@@ -5,7 +5,6 @@ import { isLoggedIn } from "../helpers/authHelper";
 import Loading from "./Loading";
 import PostCard from "./PostCard";
 import HorizontalStack from "./util/HorizontalStack";
-import "react-icons/md";
 import { MdLeaderboard } from "react-icons/md";
 
 const TopPosts = () => {

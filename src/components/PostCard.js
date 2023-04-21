@@ -52,7 +52,7 @@ const PostCard = (props) => {
 
   let maxHeight = null;
   if (preview === "primary") {
-    maxHeight = 100;
+    maxHeight = 210;
   }
 
   const handleDeletePost = async (e) => {

@@ -1,7 +1,6 @@
 import { useTheme } from "@emotion/react";
 import { autocompleteClasses, Box, Card, CardActionArea } from "@mui/material";
 import React from "react";
-import "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const PostContentBox = (props) => {

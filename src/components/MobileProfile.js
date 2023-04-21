@@ -1,14 +1,5 @@
 import { useTheme } from "@emotion/react";
-import {
-  Avatar,
-  Button,
-  Card,
-  Divider,
-  IconButton,
-  Stack,
-  Typography,
-} from "@mui/material";
-import { Box } from "@mui/system";
+import {Box, Button, Card, Divider, IconButton, Stack, Typography} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import {FiEdit2} from "react-icons/fi";
 import { MdCancel } from "react-icons/md";
