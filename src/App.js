@@ -15,6 +15,7 @@ import MessengerView from "./components/views/MessengerView";
 import { initiateSocketConnection, socket } from "./helpers/socketHelper";
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
+  zIndex: 1,
   width: 60,
   height: 36,
   padding: 8,
@@ -80,7 +81,7 @@ function ScrollTop(props) {
     }};
   return (
     <Fade in={trigger}>
-      <Box onClick={handleClick} role="presentation" sx={{ position: 'fixed', top: 0, left: '50%', transform: 'translate(-50%, 0%)', }} >
+      <Box onClick={handleClick} role="presentation" sx={{ position: 'fixed', zIndex: 2, top: 0, left: '50%', transform: 'translate(-50%, 0%)', }} >
         {children}
       </Box>
     </Fade>

@@ -9,7 +9,7 @@ const ProfileTabs = (props) => {
 
   return (
     <Card variant="outlined">
-      <Tabs value={props.tab} onChange={handleChange} variant="scrollable">
+      <Tabs value={props.tab} onChange={handleChange} variant="fullWidth" centered>
         <Tab label={<MdOutlineDashboard size='25px' />} value="posts" />
         <Tab label={<MdOutlineFavoriteBorder size="24px" />} value="liked" />
         <Tab label={<MdOutlineInsertComment size='25px' />} value="comments" />

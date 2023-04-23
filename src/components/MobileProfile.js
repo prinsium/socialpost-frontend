@@ -1,10 +1,11 @@
 import { useTheme } from "@emotion/react";
-import {Box, Button, Card, Divider, IconButton, Stack, Typography} from "@mui/material";
+import {Avatar, Box, Button, Card, Divider, IconButton, Paper, Stack, Typography,} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import {FiEdit2} from "react-icons/fi";
 import { MdCancel } from "react-icons/md";
 import { isLoggedIn } from "../helpers/authHelper";
 import ContentUpdateEditor from "./ContentUpdateEditor";
+import Loading from "./Loading";
 import UserAvatar from "./UserAvatar";
 import HorizontalStack from "./util/HorizontalStack";
 
@@ -21,80 +22,61 @@ const MobileProfile = (props) => {
   }, [props.profile]);
 
   return (
-    <Card sx={{ display: { sm: "block", md: "none" }, mb: 2 }}>
+    <Card variant="outlined" sx={{ display: { sm: "block", md: "none" }, mb: 2 }}>
+     <Paper sx={{p:2}} elevation={0}>
       {user ? (
-        <Stack spacing={2}>
-          <HorizontalStack spacing={2} justifyContent="space-between">
-            <HorizontalStack>
-              <UserAvatar width={50} height={50} username={user.username} />
-              <Typography variant="h6" textOverflow="ellipses">
-                {user.username}
-              </Typography>
-            </HorizontalStack>
-
-            <Box sx={{ display: { xs: "none", sm: "block" } }}>
-              <HorizontalStack spacing={3}>
-                <Stack alignItems="center">
-                  <Typography>Likes</Typography>
-                  <Typography >
-                    <b>{props.profile.posts.likeCount}</b>
-                  </Typography>
-                </Stack>
-                <Stack alignItems="center">
-                  <Typography >Posts</Typography>
-                  <Typography >
-                    <b>{props.profile.posts.count}</b>
-                  </Typography>
-                </Stack>
-              </HorizontalStack>
-            </Box>
-          </HorizontalStack>
-          <Divider />
-          <Box>
-            {currentUser && user._id === currentUser.userId && (
-              <IconButton onClick={props.handleEditing} sx={{ mr: 1 }}>
-                {props.editing ? (
-                  <MdCancel  />
-                ) : (
-                  <FiEdit2 />
-                )}
-              </IconButton>
-            )}
-            {user.biography ? (
-              <>
-                <Typography textAlign="center" variant="p">
-                  {user.biography}
-                </Typography>
-              </>
-            ) : (
-              <Typography variant="p">
-                  No bio yet{" "}
-                  {currentUser && user._id === currentUser.userId && (
-                    <span>- Tap on the edit icon to add your bio</span>
-                  )}
-              </Typography>
-            )}
-            {currentUser && user._id !== currentUser.userId && (
-              <Box sx={{ mt: 2 }}>
-                <Button variant="outlined" onClick={props.handleMessage}>
-                  Message
-                </Button>
-              </Box>
-            )}
-            {props.editing && (
-              <Box>
-                <ContentUpdateEditor
-                  handleSubmit={props.handleSubmit}
-                  originalContent={user.biography}
-                  validate={props.validate}
-                />
-              </Box>
-            )}
+        <Stack alignItems="center" spacing={2}>
+          <Box my={1}>
+            <UserAvatar width={150} height={150} shape="rounded" username={user.username} />
           </Box>
+
+          <Typography variant="h6">{user.username}</Typography>
+
+          {props.editing ? (
+            <Box>
+              <ContentUpdateEditor
+                handleSubmit={props.handleSubmit}
+                originalContent={user.biography}
+                validate={props.validate}
+              />
+            </Box>
+          ) : user.biography ? (
+            <Typography textAlign="center" variant="p">
+              {user.biography}
+            </Typography>
+          ) : (
+            <Typography variant="p">
+              No bio yet
+            </Typography>
+          )}
+
+          {currentUser && user._id === currentUser.userId && (
+            <Box>
+              <IconButton onClick={props.handleEditing}>
+                {props.editing ? <MdCancel /> : <FiEdit2 />}
+              </IconButton>
+            </Box>
+          )}
+
+          {currentUser && user._id !== currentUser.userId && (
+            <Button variant="outlined" color="error" onClick={props.handleMessage}>
+              Message
+            </Button>
+          )}
+
+          <HorizontalStack>
+            <Typography color="text.secondary">
+              Likes: <b>{props.profile.posts.likeCount}</b>
+            </Typography>
+            <Typography color="text.secondary">
+              Posts: <b>{props.profile.posts.count}</b>
+            </Typography>
+          </HorizontalStack>
         </Stack>
       ) : (
-        <>Loading...</>
+        <Loading label="Loading profile" />
       )}
+      </Paper>
     </Card>
   );
 };

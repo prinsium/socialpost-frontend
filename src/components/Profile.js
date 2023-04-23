@@ -1,11 +1,10 @@
 import { useTheme } from "@emotion/react";
-import {Avatar, Box, Button, Card, Divider, IconButton, Stack, Typography,} from "@mui/material";
+import {Avatar, Box, Button, Card, Divider, IconButton, Paper, Stack, Typography,} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import {FiEdit2} from "react-icons/fi";
 import { MdCancel } from "react-icons/md";
 import { isLoggedIn } from "../helpers/authHelper";
 import ContentUpdateEditor from "./ContentUpdateEditor";
-import Footer from "./Footer";
 import Loading from "./Loading";
 import UserAvatar from "./UserAvatar";
 import HorizontalStack from "./util/HorizontalStack";
@@ -23,14 +22,15 @@ const Profile = (props) => {
   }, [props.profile]);
 
   return (
-    <Card variant="outlined">
+    <Card variant="outlined" sx={{p:2}}>
+      <Paper sx={{p:2}} variant="outlined" squared>
       {user ? (
         <Stack alignItems="center" spacing={2}>
           <Box my={1}>
-            <UserAvatar width={150} height={150} username={user.username} />
+            <UserAvatar width={150} height={150} shape="rounded" username={user.username} />
           </Box>
 
-          <Typography variant="h5">{user.username}</Typography>
+          <Typography variant="h6">{user.username}</Typography>
 
           {props.editing ? (
             <Box>
@@ -59,23 +59,24 @@ const Profile = (props) => {
           )}
 
           {currentUser && user._id !== currentUser.userId && (
-            <Button variant="outlined" onClick={props.handleMessage}>
+            <Button variant="outlined" color="error" onClick={props.handleMessage}>
               Message
             </Button>
           )}
 
           <HorizontalStack>
             <Typography color="text.secondary">
-              Likes <b>{props.profile.posts.likeCount}</b>
+              Likes: <b>{props.profile.posts.likeCount}</b>
             </Typography>
             <Typography color="text.secondary">
-              Posts <b>{props.profile.posts.count}</b>
+              Posts: <b>{props.profile.posts.count}</b>
             </Typography>
           </HorizontalStack>
         </Stack>
       ) : (
         <Loading label="Loading profile" />
       )}
+      </Paper>
     </Card>
   );
 };
