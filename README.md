@@ -1,4 +1,5 @@
 # Installation and usage
+create a folder named 'socialpost' and under that folder
 1. Clone this repository (also backend --> https://github.com/3vdi/socialpost-backend.git )
 ```
 git clone https://github.com/3vdi/socialpost-frontend.git
