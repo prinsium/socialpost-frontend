@@ -7,17 +7,12 @@ git clone https://github.com/3vdi/socialpost-frontend.git
 ```
 npm install
 ```
-3. Create .env in root directory
+3. in your config.js file
 ```
-cd ..
-touch .env
+BASE_URL= "http://localhost:3000/"
 ```
-4. Configure environment variables in your new .env file
-```
-MONGO_URI=<YOUR_MONGO_URI> 
-TOKEN_KEY=<YOUR_TOKEN_KEY>
-```
-5. Start a new terminal and run react's development server
+or use url on which the backend is running on your localhost
+4. Start a new terminal and run react's development server
 ```
 npm start
 ```
