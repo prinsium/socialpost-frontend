@@ -21,7 +21,7 @@ const Copyright = () => {
       <Box sx={{ flexDirection: 'row-reverse' }}>
        <span className='d-flex gap-xxs'>
           <a
-            href='https://github.com/3vdi'
+            href='https://github.com/prinsium'
             target='_blank'
             rel='noreferrer'>
             <GitHubIcon />
