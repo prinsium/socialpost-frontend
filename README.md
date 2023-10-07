@@ -2,7 +2,7 @@
 create a folder named 'socialpost' and under that folder
 1. Clone this repository (also backend --> https://github.com/prinsium/socialpost-backend.git )
 ```
-git clone https://github.com/3vdi/socialpost-frontend.git
+git clone https://github.com/prinsium/socialpost-frontend.git
 ```
 2. Install dependencies
 ```
